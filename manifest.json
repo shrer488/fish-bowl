@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Fish bowl",
+  "description": "detect water consumption in AI LLM tools",
+  "version": "1.0",
+  "action": {
+    "default_popup": "test.html"
+  }
+}
