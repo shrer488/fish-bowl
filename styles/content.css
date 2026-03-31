@@ -7,9 +7,11 @@ body{
     ul{
         background-color: brown;
     }
-    .waterLevel{
+
+    .test{
         background-color: aqua;
         padding: 10px;
-        position: fixed;
+        position: absolute;
+        top: 10;
     }
 }

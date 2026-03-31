@@ -6,10 +6,17 @@ const sendButton = document.getElementById('button')
 console.log(document)
 
 
-let waterUsed = 0
-let waterBudget = 300
+
 
 setTimeout(() => {
+    const chatArea = document.querySelector('div[aria-label="Chat with ChatGPT"]')
+    chatArea.innerHTML = `
+    <div >
+    <p class = "test"> heyyyyyyyyyyebwebwe </p>
+    </div>
+    `;
+
+
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
 			console.log('Visitor pressed return when typing!')
@@ -23,15 +30,56 @@ setTimeout(() => {
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
 			console.log('Visitor clicked send button!');
             waterLevelCalculator();
-
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
 }, 3000)
 
 
+let waterUsed = 0
+let waterBudget = 300
+
+function waterLevelCalculator(){
+    waterUsed = waterUsed + 10; //because we are increasing the token rate by 10l
+    let remainingWater = waterBudget-waterUsed;
+    console.log('waterUsed = ', waterUsed)
+    console.log('remainingWater = ', remainingWater);
+
+let form = document.getElementsByTagName("form")
+console.log(form)
+    //basically need to delete waterLevel everytime user sends. a message
+    
+}
+
+
+// Example to add a new paragraph element
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "A new paragraph.";
+console.log(newParagraph)
+
+
+
+
+
+
+
+
 //adding waterbowl
-let fishBowl = document.createElement('ul')
-console.log(fishBowl)
+// let fishBowl = document.createElement('ul')
+// console.log(fishBowl)
+
+// const field = document.getElementsByTagName('main')
+
+// document.body.appendChild(fishBowl)
+// let waterLevel =`
+//        <p>hello</p>
+//         ` 
+
+// fishBowl.insertAdjacentHTML('beforeend', waterLevel)
+// let chatArea =document.querySelector('div[aria-label="Chat with ChatGPT"]');
+// document.getElementById("parentElementId").appendChild(waterLevel);
+
+
+
 
 // function bowlRefill(){
 //         let waterLevel =`
@@ -45,22 +93,6 @@ console.log(fishBowl)
 //             console.log(i)
 //         }
 // }
-
-function waterLevelCalculator(){
-    waterUsed = waterUsed + 10; //because we are increasing the token rate by 10l
-    let remainingWater = waterBudget-waterUsed;
-    console.log('waterUsed = ', waterUsed)
-    console.log('remainingWater = ', remainingWater);
-
-    let waterLevel =`
-        <li class='waterLevel'>
-        </li>
-        ` 
-
-    fishBowl.insertAdjacentHTML('beforeend', waterLevel)
-}
-
-
 
 
 
