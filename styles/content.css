@@ -1,0 +1,13 @@
+*{
+    /* background-color: tomato; */
+}
+
+body{
+    button{
+        background-color: yellow;
+    }
+
+    .ProseMirror{
+        background-color: rgb(255, 0, 119);
+    }
+}

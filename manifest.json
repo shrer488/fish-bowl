@@ -3,15 +3,15 @@
   "name": "Fish bowl",
   "description": "detect water consumption in AI LLM tools",
   "version": "1.0",
-  "action": {
-    "default_popup": "test.html"
-  },
   "content_scripts": [
     {
-      "js": ["scripts/content.js"],
+      "js": ["scripts/test.js"],
       "matches": [
-         "https://chatgpt.com/*"
-        ]
+          "https://chatgpt.com/*",
+          "https://claude.ai/*",
+          "https://gemini.google.com/*"
+        ],
+        "css": ["styles/content.css"]
     }
 ]
 }
