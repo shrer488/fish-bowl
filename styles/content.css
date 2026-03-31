@@ -3,11 +3,13 @@
 }
 
 body{
-    button{
-        /* background-color: yellow; */
-    }
 
-    #composer-submit-button{
-        background-color: rgb(255, 0, 119);
+    ul{
+        background-color: brown;
+    }
+    .waterLevel{
+        background-color: aqua;
+        padding: 10px;
+        position: fixed;
     }
 }
