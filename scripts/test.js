@@ -9,13 +9,23 @@ console.log(document)
 
 
 setTimeout(() => {
-    const chatArea = document.querySelector('div[aria-label="Chat with ChatGPT"]')
-    chatArea.innerHTML = `
-    <div >
-    <p class = "test"> heyyyyyyyyyyebwebwe </p>
+
+    const chatArea = document.querySelector("main");
+    let fishBowl = `
+    <div class="fishBowl">
+        <img src="" alt="fish">
     </div>
     `;
 
+    console.log(fishBowl);
+
+    if (chatArea) {
+    chatArea.insertAdjacentHTML("beforeend", fishBowl);
+    } else {
+    console.log("chatArea not found");
+    }
+
+    
 
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
@@ -49,13 +59,6 @@ console.log(form)
     //basically need to delete waterLevel everytime user sends. a message
     
 }
-
-
-// Example to add a new paragraph element
-const newParagraph = document.createElement("p");
-newParagraph.textContent = "A new paragraph.";
-console.log(newParagraph)
-
 
 
 

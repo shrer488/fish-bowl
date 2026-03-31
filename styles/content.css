@@ -14,4 +14,10 @@ body{
         position: absolute;
         top: 10;
     }
+
+    .fishbowl{
+        background-color: aqua;
+        position: fixed;
+
+    }
 }
