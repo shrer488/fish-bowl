@@ -20,7 +20,7 @@ setTimeout(() => {
     console.log(fishBowl);
 
     if (chatArea) {
-    chatArea.insertAdjacentHTML("beforeend", fishBowl);
+    chatArea.insertAdjacentHTML("afterbegin", fishBowl);
     } else {
     console.log("chatArea not found");
     }

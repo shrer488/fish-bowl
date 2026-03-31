@@ -7,17 +7,16 @@ body{
     ul{
         background-color: brown;
     }
-
-    .test{
-        background-color: aqua;
-        padding: 10px;
-        position: absolute;
-        top: 10;
+    
+    main{
+        position: relative;
     }
 
-    .fishbowl{
+    .fishBowl{
         background-color: aqua;
-        position: fixed;
+        position: sticky;
+        top: 0;
 
     }
+
 }
