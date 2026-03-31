@@ -2,14 +2,14 @@ const url = new URL(window.location.href);
 console.log(url)
 
 const sendButton = document.getElementById('composer-submit-button')
-const primaryButton = document.querySelector('[data-type="unified-composer"]');
-console.log(primaryButton.dataset)
 
-console.log(sendButton.dataset)
+
+
+//need to add a mutation observer thing to check if the sendButton exists and is clicked
+// console.log(sendButton.dataset)
 sendButton.addEventListener('click', ()=>{
     console.log('clicked')
 })
-
 
 
 

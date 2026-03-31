@@ -4,10 +4,10 @@
 
 body{
     button{
-        background-color: yellow;
+        /* background-color: yellow; */
     }
 
-    .ProseMirror{
+    #composer-submit-button{
         background-color: rgb(255, 0, 119);
     }
 }
