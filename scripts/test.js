@@ -10,12 +10,12 @@ console.log(document)
 setTimeout(() => {
 
     // CREATING WATER BOWL
-    const chatArea = document.querySelector("main");
+    const chatArea = document.querySelector("body");
 
     let fishBowl = `
     <ul class="fishBowl">
         <li class ="fish">
-        <img src="images/fish.png" alt="fish">
+        <img src="/images/fish.png" alt="fish">
         </li>
     </ul>
     `;
@@ -59,16 +59,15 @@ let waterUsed = 0
 let waterBudget = 300
 
 function waterLevelCalculator(){
-    waterUsed = waterUsed + 10; //because we are increasing the token rate by 10l
+    waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
     let remainingWater = waterBudget-waterUsed;
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
 
     let bowlBody = document.querySelector('.fishBowl')
     const count = document.querySelectorAll('.fishBowl li').length;
-console.log(count);
-    const secondLi = bowlBody.querySelector('li:nth-child(2)');
-    // bowlLevel.style.background = 'red';
+    console.log(count);
+    const secondLi = bowlBody.querySelector('li:nth-child(2)'); // second child cause the first child is the fish lol
     console.log(secondLi)
     
     secondLi.remove();
@@ -82,8 +81,9 @@ function defaultWaterLine(){
     let bowlBody = document.querySelector('.fishBowl')
     console.log(bowlBody)
     
+    //looped to add water level according to how much water budget we assign
     for(let i=0; i <(waterBudget/10); i++){
-        bowlBody.insertAdjacentHTML("afterbegin",`<li></li>`);
+        bowlBody.insertAdjacentHTML("beforeend",`<li></li>`);
     }
     
 }
