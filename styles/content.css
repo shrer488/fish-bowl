@@ -9,11 +9,11 @@ body{
         /* background-color: aqua; */
         position: absolute;
         z-index: 1;
-        top: 5;
+        top: 5%;
         left:5%;
         /* height: 10rem; */
         width: 10rem;
-        padding-block-start: 4rem;
+        padding-block-start: 2rem;
             border: 0.3rem solid black;
             border-block-start: none;
 

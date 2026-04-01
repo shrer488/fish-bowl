@@ -56,7 +56,7 @@ setTimeout(() => {
 
 
 let waterUsed = 0
-let waterBudget = 300
+let waterBudget = 200
 
 function waterLevelCalculator(){
     waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
