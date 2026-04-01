@@ -9,6 +9,7 @@ console.log(document)
 
 setTimeout(() => {
 
+    // CREATING WATER BOWL
     const chatArea = document.querySelector("main");
 
     let fishBowl = `
@@ -18,8 +19,6 @@ setTimeout(() => {
         </li>
     </ul>
     `;
-
-
 
     //checking if chatArea even exists
     if (chatArea) {
@@ -65,22 +64,26 @@ function waterLevelCalculator(){
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
 
-    let bowlLevel = document.getElementsByClassName('fishBowl')
-    // const secondLi = document.querySelector('fishBowl li:nth-child(2)');
+    let bowlBody = document.querySelector('.fishBowl')
+    const count = document.querySelectorAll('.fishBowl li').length;
+console.log(count);
+    const secondLi = bowlBody.querySelector('li:nth-child(2)');
     // bowlLevel.style.background = 'red';
-
-    // secondLi.remove()
+    console.log(secondLi)
+    
+    secondLi.remove();
     
 
 }
 
 
+// DEFAULT WATER LEVEL
 function defaultWaterLine(){
     let bowlBody = document.querySelector('.fishBowl')
     console.log(bowlBody)
     
     for(let i=0; i <(waterBudget/10); i++){
-        bowlBody.insertAdjacentHTML("beforeend",`<li></li>`);
+        bowlBody.insertAdjacentHTML("afterbegin",`<li></li>`);
     }
     
 }

@@ -12,9 +12,12 @@ body{
         height: 10rem;
         width: 20rem;
         padding-block-start: 4rem;
+            border: 1rem solid black;
+
 
         li{
             background-color: aqua;
+            border: 0.01rem solid black;
             height: 0.3rem;
             width: 100%;
         }
