@@ -1,22 +1,17 @@
-*{
-    /* background-color: tomato; */
-}
 
 body{
-
-    ul{
-        background-color: brown;
-    }
     
     main{
         position: relative;
     }
 
     .fishBowl{
-        background-color: aqua;
+        /* background-color: aqua; */
         position: sticky;
         top: 0;
-
+        height: 20rem;
+        width: 20rem;
+        
     }
 
 }

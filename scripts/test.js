@@ -11,6 +11,7 @@ console.log(document)
 setTimeout(() => {
 
     const chatArea = document.querySelector("main");
+
     let fishBowl = `
     <div class="fishBowl">
         <img src="" alt="fish">
@@ -19,6 +20,7 @@ setTimeout(() => {
 
     console.log(fishBowl);
 
+    //checking if chatArea even exists
     if (chatArea) {
     chatArea.insertAdjacentHTML("afterbegin", fishBowl);
     } else {
@@ -54,10 +56,10 @@ function waterLevelCalculator(){
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
 
-let form = document.getElementsByTagName("form")
-console.log(form)
-    //basically need to delete waterLevel everytime user sends. a message
+    let bowlLevel = document.getElementsByClassName('fishBowl')
+    bowlLevel.style.background = 'red';
     
+
 }
 
 
