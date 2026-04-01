@@ -16,38 +16,24 @@ setTimeout(() => {
         <li class ="fish">
         <img src="images/fish.png" alt="fish">
         </li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
     </ul>
     `;
 
 
-    console.log(fishBowl);
-
 
     //checking if chatArea even exists
     if (chatArea) {
-    chatArea.insertAdjacentHTML("afterbegin", fishBowl);
-    } else {
-    console.log("chatArea not found");
+        chatArea.insertAdjacentHTML("afterbegin", fishBowl);
+        defaultWaterLine();
+    } 
+    else {
+        console.log("chatArea not found");
     }
 
+
+
     
+    // TESTING IF USER HAS SENT A PROMPT
 
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
@@ -64,6 +50,9 @@ setTimeout(() => {
             waterLevelCalculator();
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
+
+
+
 }, 3000)
 
 
@@ -87,12 +76,10 @@ function waterLevelCalculator(){
 
 
 function defaultWaterLine(){
-    let bowlBody = document.getElementsByClassName('fishBowl')
+    let bowlBody = document.querySelector('.fishBowl')
+    console.log(bowlBody)
     
-    const waterLine = `
-        <li></li>
-    `
-    for(let i=10; i <waterBudget; i++){
+    for(let i=0; i <(waterBudget/10); i++){
         bowlBody.insertAdjacentHTML("beforeend",`<li></li>`);
     }
     
