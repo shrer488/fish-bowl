@@ -7,18 +7,38 @@ console.log(document)
 
 
 
-
 setTimeout(() => {
 
     const chatArea = document.querySelector("main");
 
     let fishBowl = `
-    <div class="fishBowl">
-        <img src="" alt="fish">
-    </div>
+    <ul class="fishBowl">
+        <li class ="fish">
+        <img src="images/fish.png" alt="fish">
+        </li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
     `;
 
+
     console.log(fishBowl);
+
 
     //checking if chatArea even exists
     if (chatArea) {
@@ -57,13 +77,26 @@ function waterLevelCalculator(){
     console.log('remainingWater = ', remainingWater);
 
     let bowlLevel = document.getElementsByClassName('fishBowl')
-    bowlLevel.style.background = 'red';
+    // const secondLi = document.querySelector('fishBowl li:nth-child(2)');
+    // bowlLevel.style.background = 'red';
+
+    // secondLi.remove()
     
 
 }
 
 
-
+function defaultWaterLine(){
+    let bowlBody = document.getElementsByClassName('fishBowl')
+    
+    const waterLine = `
+        <li></li>
+    `
+    for(let i=10; i <waterBudget; i++){
+        bowlBody.insertAdjacentHTML("beforeend",`<li></li>`);
+    }
+    
+}
 
 
 
