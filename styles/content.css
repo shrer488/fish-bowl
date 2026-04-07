@@ -11,11 +11,13 @@ body{
         z-index: 1;
         top: 5%;
         left:5%;
-        /* height: 10rem; */
+        height: 10rem;
+        overflow: hidden;
         width: 10rem;
-        padding-block-start: 2rem;
-            border: 0.3rem solid black;
-            border-block-start: none;
+        padding-block-start: 1rem;
+        border: 0.3rem solid black;
+        border-block-start: none;
+        align-items: start;
 
 
         li{

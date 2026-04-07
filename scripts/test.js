@@ -30,14 +30,21 @@ setTimeout(() => {
     }
 
 
-
+    
+    
     
     // TESTING IF USER HAS SENT A PROMPT
+
 
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
 		if (event.key === 'Enter') {
 			console.log('Visitor pressed return when typing!')
 		}
+
+        if(event.key){
+            let char = charCounter();
+            console.log(char);
+        }
 	})
 
 
@@ -46,7 +53,9 @@ setTimeout(() => {
 		// But only mind clicks within the one we care about:
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
 			console.log('Visitor clicked send button!');
-            waterLevelCalculator();
+            // let characters = charCounter();
+            waterLevelCalculator(charCounter());
+            // charReset(charCounter());
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
 
@@ -58,7 +67,7 @@ setTimeout(() => {
 let waterUsed = 0
 let waterBudget = 200
 
-function waterLevelCalculator(){
+function waterLevelCalculator(char){
     waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
     let remainingWater = waterBudget-waterUsed;
     console.log('waterUsed = ', waterUsed)
@@ -67,10 +76,23 @@ function waterLevelCalculator(){
     let bowlBody = document.querySelector('.fishBowl')
     const count = document.querySelectorAll('.fishBowl li').length;
     console.log(count);
-    const secondLi = bowlBody.querySelector('li:nth-child(2)'); // second child cause the first child is the fish lol
+    const secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
+    // const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
+    
     console.log(secondLi)
     
-    secondLi.remove();
+    if(char<30){
+        secondLi.remove();
+    }
+    else if(char>30){
+        secondLi.remove();
+        secondLi.remove();
+        secondLi.remove();
+        secondLi.remove();
+        secondLi.remove();
+
+        // thirdLi.remove();
+    }
     
 
 }
@@ -83,11 +105,23 @@ function defaultWaterLine(){
     
     //looped to add water level according to how much water budget we assign
     for(let i=0; i <(waterBudget/10); i++){
-        bowlBody.insertAdjacentHTML("beforeend",`<li></li>`);
+        bowlBody.insertAdjacentHTML("afterbegin",`<li></li>`);
     }
     
 }
 
+
+let char = 0;
+// CHARACTER COUNTER
+function charCounter(){
+    char = char + 1;
+    return char;
+    
+}
+
+function charReset(char){
+    char = 0;
+}
 
 
 
