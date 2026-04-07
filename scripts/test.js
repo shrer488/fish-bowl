@@ -11,13 +11,17 @@ setTimeout(() => {
 
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
+    const fishImg = chrome.runtime.getURL("images/fish-swimming.gif");
+    console.log(chrome.runtime.getURL("images/fish-swimming.png"));
 
     let fishBowl = `
     <ul class="fishBowl">
+        
         <li class ="fish">
-        <img src="/images/fish.png" alt="fish">
+        <img src="${fishImg}" alt="fish">
         </li>
     </ul>
+    <div class="mask-source"></div>
     `;
 
     //checking if chatArea even exists

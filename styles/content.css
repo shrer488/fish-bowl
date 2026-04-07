@@ -6,7 +6,6 @@ body{
     }
 
     .fishBowl{
-        /* background-color: aqua; */
         position: absolute;
         z-index: 1;
         top: 5%;
@@ -15,26 +14,37 @@ body{
         overflow: hidden;
         width: 10rem;
         padding-block-start: 1rem;
-        border: 0.3rem solid black;
+        border-top: 0rem;
+        border-radius: 5rem;
         border-block-start: none;
-        align-items: start;
+        display: flex;
+        flex-direction: column-reverse;
 
 
         li{
-            background-color: aqua;
-            border: 0.01rem solid black;
+            background-color: rgba(174, 240, 240, 0.477);
             height: 0.3rem;
             width: 100%;
         }
 
         li:first-child{
+            background-color: rgba(109, 231, 231, 0.582);
             position: relative;
+            border-top-left-radius: 5rem;
+        border-top-right-radius: 5rem;
+        
             img{
                 position: absolute;
+                left: 50%;
                 /* background-image: url(/images/fish.png); */
             }
         }
         
+    }
+
+    .mask-source{
+        mask-image: url("/images/bowl-mask.svg");
+       mask-mode: alpha;
     }
 
 }
