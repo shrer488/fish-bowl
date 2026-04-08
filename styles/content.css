@@ -17,10 +17,18 @@ body{
         border-top: 0rem;
         border-radius: 5rem;
         border-block-start: none;
+        /* border: 0.2rem solid rgba(144, 200, 200, 0.562); */
         display: flex;
         flex-direction: column-reverse;
         background-color: rgba(226, 250, 250, 0.562);
-        mask-image: ;
+        mask-image: linear-gradient(
+            0deg,
+            black 0 9rem,
+            transparent 1px 200px
+            );
+        /* clip-path: ellipse(50% 40% at 50% 50%); */
+        /* mask-composite: exclude; */
+         /* mask-image: radial-gradient(black 50%, transparent 60%); */
 
 
         li{

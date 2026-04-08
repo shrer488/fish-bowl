@@ -11,8 +11,8 @@ setTimeout(() => {
 
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
-    const fishImg = chrome.runtime.getURL("images/fish-swimming.gif");
-    console.log(chrome.runtime.getURL("images/fish-swimming.png"));
+    const fishImg = chrome.runtime.getURL("/images/fish-swimming.gif");
+    console.log(chrome.runtime.getURL("images/fish-swimming.gif"));
 
     let fishBowl = `
     <ul class="fishBowl">
@@ -41,8 +41,10 @@ setTimeout(() => {
 
 
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
-		if (event.key === 'Enter') {
-			console.log('Visitor pressed return when typing!')
+		if (event.key === "Enter" && !event.shiftKey) {
+            //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
+			console.log('Visitor pressed return!')
+            waterLevelCalculator(charCounter());
 		}
 
         if(event.key){
@@ -88,6 +90,7 @@ function waterLevelCalculator(char){
     if(char<30){
         secondLi.remove();
     }
+
     else if(char>30){
         secondLi.remove();
         secondLi.remove();
