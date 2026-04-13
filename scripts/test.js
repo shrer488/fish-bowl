@@ -5,7 +5,12 @@ console.log(url)
 const sendButton = document.getElementById('button')
 console.log(document)
 
+// const seeBowl = document.getElementById('seeBowl')
 
+
+// seeBowl.addEventListener('click', function(){
+//     console.log('button clicked!')
+// })
 
 setTimeout(() => {
 
@@ -15,13 +20,14 @@ setTimeout(() => {
     console.log(chrome.runtime.getURL("images/fish-swimming.gif"));
 
     let fishBowl = `
+    <div class="bowlArea">
     <ul class="fishBowl">
         
         <li class ="fish">
         <img src="${fishImg}" alt="fish">
         </li>
     </ul>
-    <div class="mask-source"></div>
+    </div>
     `;
 
     //checking if chatArea even exists
@@ -71,13 +77,23 @@ setTimeout(() => {
 
 
 let waterUsed = 0
-let waterBudget = 200
+let waterBudget = 20
 
 function waterLevelCalculator(char){
     waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
     let remainingWater = waterBudget-waterUsed;
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
+    
+    if(remainingWater == 0){
+        console.log("your fish is dead!")
+        let deadFish = `
+        <p>Your fish died!</p>
+        `
+        let bowlArea = document.querySelector('.bowlArea');
+        bowlArea.insertAdjacentHTML("afterbegin",deadFish);
+    }
+
 
     let bowlBody = document.querySelector('.fishBowl')
     const count = document.querySelectorAll('.fishBowl li').length;
