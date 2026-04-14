@@ -1,0 +1,18 @@
+*{
+    --spacing: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    h1{
+        font-size: 2rem;
+    }
+
+    p{
+        font-size: 1rem;
+    }
+
+    button{
+        padding: var(--spacing);
+    }
+}

@@ -23,7 +23,7 @@ body{
         }
 
         img{
-            background-image: url("images/guppy.png");
+            height: 3rem;
         }
     }
 
@@ -97,4 +97,45 @@ body{
 
 .applyShake {
 animation: shake 0.4s;
+}
+
+@keyframes fishMove {
+        from {
+    left: 6rem;
+  }
+  10% {
+    left: 0;
+    transform: scaleX(1);
+  }
+  10.5% {
+    transform: scaleX(-1);
+    z-index: 10;
+  }
+
+  30%{
+    left: 8rem;
+  }
+
+  70% {
+    top: 5rem;
+    left: -30px;
+    transform: scaleX(1);
+    z-index: 90;
+  }
+  70.5% {
+    transform: scaleX(-1);
+    z-index: 10;
+    left: -30px;
+  
+  to {
+    left: 6rem;
+  }
+}
+}
+
+.applyFishMove {
+    animation-name: fishMove;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }

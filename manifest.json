@@ -13,16 +13,25 @@
     "48": "/images/icons/48.png",
     "128": "/images/icons/128.png"
   },
-
   "content_scripts": [
     {
       "js": ["scripts/test.js"],
       
       "matches": [
-          "https://chatgpt.com/*"
-        ],
-        "css": ["styles/content.css"]
-      }
-    ]
-    
-  }
+        "https://chatgpt.com/*"
+      ],
+      "css": ["styles/content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+     {
+       "resources": ["*.png"],
+       "matches": [
+        "https://chatgpt.com/*"
+      ],
+       "use_dynamic_url": true
+     }]
+  
+  
+  
+}

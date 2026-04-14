@@ -16,15 +16,19 @@ setTimeout(() => {
 
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
-    const fishImg = chrome.runtime.getURL("images/guppy.png");
+    let normalFish = chrome.runtime.getURL("images/guppy.png");
+    
+
+
+
     console.log(chrome.runtime.getURL("images/fish-swimming.gif"));
 
     let fishBowl = `
     <div class="bowlArea">
     <ul class="fishBowl">
         
-        <li class ="fish">
-        <img src="${fishImg}" alt="fish">
+        <li>
+        <img class="fish" src="${normalFish}" alt="fish">
         </li>
     </ul>
     </div>
@@ -39,6 +43,8 @@ setTimeout(() => {
         console.log("chatArea not found");
     }
 
+    
+    moveFish();
 
     
     
@@ -88,14 +94,26 @@ function waterLevelCalculator(char){
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
     
+
+    let scaredFish = chrome.runtime.getURL("images/guppy scared.png");
+    let cryFish = chrome.runtime.getURL("images/guppy cry.png");
+    let deadFish = chrome.runtime.getURL("images/guppy dead.png");
+    let fish = document.getElementById("fish");
+
+
     if(remainingWater == 0){
         console.log("your fish is dead!")
+        let fishBowl = document.querySelector("fishBowl");
         let deadFish = `
         <p>Your fish died!</p>
         `
         let bowlArea = document.querySelector('.bowlArea');
         bowlArea.insertAdjacentHTML("afterbegin",deadFish);
+        fish.src = "${deadFish}";
+
     }
+
+
 
 
     let bowlBody = document.querySelector('.fishBowl')
@@ -149,6 +167,12 @@ function moveBowl(){
     bowlArea.addEventListener('animationend', () => {
     bowlArea.classList.remove('applyShake');
     }, { once: true });
+}
+
+function moveFish(){
+    let fish = document.querySelector(".fish");
+    console.log(fish);
+    fish.classList.add('applyFishMove');
 }
 
 
