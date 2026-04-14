@@ -7,6 +7,12 @@
   "action": {
     "default_popup": "test.html"
   },
+  "icons": {
+    "16": "/images/icons/16.png",
+    "32": "/images/icons/32.png",
+    "48": "/images/icons/48.png",
+    "128": "/images/icons/128.png"
+  },
 
   "content_scripts": [
     {
@@ -20,6 +26,3 @@
     ]
     
   }
-  
-  // "https://claude.ai/*",
-  // "https://gemini.google.com/*"

@@ -21,6 +21,10 @@ body{
             border: 1rem solid rgb(145, 118, 14);
             border-radius: 1rem;
         }
+
+        img{
+            background-image: url("images/guppy.png");
+        }
     }
 
     .fishBowl{
