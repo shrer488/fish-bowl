@@ -16,7 +16,7 @@ setTimeout(() => {
 
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
-    const fishImg = chrome.runtime.getURL("/images/fish-swimming.gif");
+    const fishImg = chrome.runtime.getURL("images/guppy.png");
     console.log(chrome.runtime.getURL("images/fish-swimming.gif"));
 
     let fishBowl = `
@@ -137,12 +137,12 @@ function defaultWaterLine(){
 }
 
 
-//Moving bowl
+// Moving bowl function
+// for shaking the bowl when water level decreases
 function moveBowl(){
     let bowlArea = document.querySelector('.fishBowl');
-    // let position = bowlArea.getBoundingClientRect();
-    // console.log(position);
 
+    //adding the shake animation function to the fishbowl
     bowlArea.classList.add('applyShake');
 
     // to make the shake animation happen only once, removed the applyShake function (the animation function) and added {once:true} which basically checks if the animation happened once.

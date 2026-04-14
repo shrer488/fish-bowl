@@ -13,12 +13,13 @@
       "js": ["scripts/test.js"],
       
       "matches": [
-          "https://chatgpt.com/*",
-          "https://claude.ai/*",
-          "https://gemini.google.com/*"
+          "https://chatgpt.com/*"
         ],
         "css": ["styles/content.css"]
-    }
-]
-
-}
+      }
+    ]
+    
+  }
+  
+  // "https://claude.ai/*",
+  // "https://gemini.google.com/*"
