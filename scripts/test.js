@@ -51,6 +51,7 @@ setTimeout(() => {
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
 			console.log('Visitor pressed return!')
             waterLevelCalculator(charCounter());
+            moveBowl();
 		}
 
         if(event.key){
@@ -67,6 +68,8 @@ setTimeout(() => {
 			console.log('Visitor clicked send button!');
             // let characters = charCounter();
             waterLevelCalculator(charCounter());
+            moveBowl();
+
             // charReset(charCounter());
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
@@ -77,7 +80,7 @@ setTimeout(() => {
 
 
 let waterUsed = 0
-let waterBudget = 20
+let waterBudget = 200
 
 function waterLevelCalculator(char){
     waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
@@ -131,6 +134,21 @@ function defaultWaterLine(){
         bowlBody.insertAdjacentHTML("afterbegin",`<li></li>`);
     }
     
+}
+
+
+//Moving bowl
+function moveBowl(){
+    let bowlArea = document.querySelector('.fishBowl');
+    // let position = bowlArea.getBoundingClientRect();
+    // console.log(position);
+
+    bowlArea.classList.add('applyShake');
+
+    // to make the shake animation happen only once, removed the applyShake function (the animation function) and added {once:true} which basically checks if the animation happened once.
+    bowlArea.addEventListener('animationend', () => {
+    bowlArea.classList.remove('applyShake');
+    }, { once: true });
 }
 
 

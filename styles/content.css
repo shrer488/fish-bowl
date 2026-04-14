@@ -74,9 +74,23 @@ body{
         
     }
 
+    
     .mask-source{
         mask-image: url("/images/bowl-mask.svg");
-       mask-mode: alpha;
+        mask-mode: alpha;
+    }
+    
+}
+
+/* got the animation from here https://codepen.io/EeKay/pen/OJBMpxK  */
+@keyframes shake {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(0.5rem) }
+    50% { transform: translateX(-0.5rem) }
+    75% { transform: translateX(0.5rem) }
+    100% { transform: translateX(0) }
     }
 
+.applyShake {
+animation: shake 0.4s;
 }
