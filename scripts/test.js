@@ -97,7 +97,7 @@ function waterLevelCalculator(char){
 
     let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
     let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
-    let deadFish = chrome.runtime.getURL("images/guppy-dead.png");
+    let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
     let fish = document.querySelector(".fish");
     console.log(fish.src);
 
@@ -106,9 +106,14 @@ function waterLevelCalculator(char){
         fish.src =scaredFish;
     }
 
-    if(remainingWater == 120){
+    if(remainingWater == 130){
         //change fish to cry
         fish.src = cryFish;
+    }
+
+    if(remainingWater == 60){
+        fish.classList.remove('applyFishMove');
+        fish.classList.add('applyFishShake');
     }
 
     if(remainingWater == 0){
@@ -119,8 +124,9 @@ function waterLevelCalculator(char){
         `
         let bowlArea = document.querySelector('.bowlArea');
         bowlArea.insertAdjacentHTML("afterbegin",deadFish);
-        fish.src = "${deadFish}";
-
+        fish.src = deadFishImage;
+        fish.classList.remove('applyFishShake');
+        fish.add('deadFishPosition')
     }
 
 
