@@ -86,7 +86,7 @@ setTimeout(() => {
 
 
 let waterUsed = 0
-let waterBudget = 200
+let waterBudget = 210
 
 function waterLevelCalculator(char){
     waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
@@ -100,6 +100,15 @@ function waterLevelCalculator(char){
     let deadFish = chrome.runtime.getURL("images/guppy dead.png");
     let fish = document.getElementById("fish");
 
+    if(remainingWater == 200){
+        // change fish to be scared 
+        fish.src ="images/guppy scared.png";
+    }
+
+    if(remainingWater == 100){
+        //change fish to cry
+        fish.src = "${cryFish}";
+    }
 
     if(remainingWater == 0){
         console.log("your fish is dead!")

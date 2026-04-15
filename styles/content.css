@@ -103,39 +103,39 @@ animation: shake 0.4s;
         from {
     left: 6rem;
   }
-  10% {
+  50%{
     left: 0;
+  }
+  51%{
+    left: -1rem;
     transform: scaleX(1);
   }
-  10.5% {
+  54%{
+    left:-1rem;
     transform: scaleX(-1);
-    z-index: 10;
   }
 
-  30%{
-    left: 8rem;
+  96%{
+    left: 7rem;
+    transform: scaleX(-1);
   }
-
-  70% {
-    top: 5rem;
-    left: -30px;
+  98.9%{
+    left: 7rem;
     transform: scaleX(1);
-    z-index: 90;
   }
-  70.5% {
-    transform: scaleX(-1);
-    z-index: 10;
-    left: -30px;
-  
+  99%{
+    left:6rem;
+  }
+
   to {
     left: 6rem;
   }
 }
-}
+
 
 .applyFishMove {
     animation-name: fishMove;
-  animation-duration: 30s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
