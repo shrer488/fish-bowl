@@ -1,18 +1,26 @@
 *{
-    --spacing: 1rem;
     font-family: 'Courier New', Courier, monospace;
 }
 
 body{
-    h1{
-        font-size: 2rem;
-    }
-
-    p{
-        font-size: 1rem;
+    background: #CFF6F6;
+    display: flex;
+    min-width: 20rem;
+    
+    header{
+        /* display: flex; */
+        h1{
+            font-size: 2rem;
+            margin-block-end: 0.2rem;
+        }
+    
+        p{
+            font-size: 1rem;
+        }
     }
 
     button{
-        padding: var(--spacing);
+        padding: 1rem;
+        display: inline-block;
     }
 }

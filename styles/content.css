@@ -9,17 +9,17 @@ body{
         position: absolute;
         z-index: 1;
         top: 5%;
-        left:5%;
+        right:5%;
         display: flex;
         flex-direction: column-reverse;
 
         p{
             /* position: absolute;
             z-index: 1; */
-            padding: 2rem;
-            background-color: antiquewhite;
-            border: 1rem solid rgb(145, 118, 14);
-            border-radius: 1rem;
+            padding: 1rem;
+            background-color: rgb(255, 251, 247);
+            border: 0.2rem solid rgb(181, 181, 181);
+            border-radius: 2rem;
         }
 
         img{
@@ -86,6 +86,30 @@ body{
     
 }
 
+
+/* ANIMATIONS */
+
+/* Bowl first appears */
+@keyframes bowlAppear {
+    from {
+        /* top: -1rem; */
+        scale: 0;
+    }
+    to{
+        /* top: 5%; */
+        scale: 1;
+    }
+}
+
+.applyBowlAppear{
+    animation: bowlAppear;
+    animation-duration: 0.3s;
+}
+
+
+
+
+/* Bowl shake on message sent */
 /* got the animation from here https://codepen.io/EeKay/pen/OJBMpxK  */
 @keyframes shake {
     0% { transform: translateX(0) }
@@ -96,9 +120,12 @@ body{
     }
 
 .applyShake {
-animation: shake 0.4s;
+animation: shake;
+animation-duration: 0.4s;
 }
 
+
+/* Fish swim across the bowl and back */
 @keyframes fishMove {
         from {
     left: 6rem;
@@ -132,7 +159,6 @@ animation: shake 0.4s;
   }
 }
 
-
 .applyFishMove {
     animation-name: fishMove;
   animation-duration: 5s;
@@ -140,6 +166,7 @@ animation: shake 0.4s;
   animation-timing-function: linear;
 }
 
+/* Fish swim frantic when water level is very low */
 @keyframes fishShake {
         from {
             top:7rem ;
@@ -184,6 +211,7 @@ animation: shake 0.4s;
   animation-timing-function: linear;
 }
 
+/* Fixing the position of fish when it dies */
 .deadFishPosition{
     top: 7.5rem;
     left: 3rem;

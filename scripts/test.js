@@ -5,12 +5,6 @@ console.log(url)
 const sendButton = document.getElementById('button')
 console.log(document)
 
-// const seeBowl = document.getElementById('seeBowl')
-
-
-// seeBowl.addEventListener('click', function(){
-//     console.log('button clicked!')
-// })
 
 setTimeout(() => {
 
@@ -19,12 +13,8 @@ setTimeout(() => {
     let normalFish = chrome.runtime.getURL("images/guppy.png");
     
 
-
-
-    console.log(chrome.runtime.getURL("images/fish-swimming.gif"));
-
     let fishBowl = `
-    <div class="bowlArea">
+    <div class="bowlArea applyBowlAppear">
     <ul class="fishBowl">
         
         <li>
@@ -36,7 +26,7 @@ setTimeout(() => {
 
     //checking if chatArea even exists
     if (chatArea) {
-        chatArea.insertAdjacentHTML("afterbegin", fishBowl);
+        chatArea.insertAdjacentHTML("afterbegin", fishBowl); //adding fishbowl
         defaultWaterLine();
     } 
     else {
@@ -44,6 +34,7 @@ setTimeout(() => {
     }
 
     
+    // making the fish move around the bowl
     moveFish();
 
     
@@ -51,18 +42,22 @@ setTimeout(() => {
     
     // TESTING IF USER HAS SENT A PROMPT
 
-
-	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
-		if (event.key === "Enter" && !event.shiftKey) {
-            //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
-			console.log('Visitor pressed return!')
-            waterLevelCalculator(charCounter());
-            moveBowl();
-		}
-
+    let char = 0;
+	document.querySelector('div[aria-label="Chat with ChatGPT"]').
+    addEventListener('keydown', (event) => {
+        
+        
         if(event.key){
-            let char = charCounter();
+            char = char + 1;
             console.log(char);
+
+            if (event.key === "Enter" && !event.shiftKey) {
+                //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
+                console.log('Visitor pressed return!')
+                waterLevelCalculator(char);
+                char=0;
+                moveBowl();
+            }
         }
 	})
 
@@ -75,6 +70,7 @@ setTimeout(() => {
             // let characters = charCounter();
             waterLevelCalculator(charCounter());
             moveBowl();
+            char = 0;
 
             // charReset(charCounter());
 		}
@@ -99,7 +95,7 @@ function waterLevelCalculator(char){
     let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
     let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
     let fish = document.querySelector(".fish");
-    console.log(fish.src);
+    // console.log(fish.src);
 
     if(remainingWater == 180){
         // change fish to be scared 
@@ -135,21 +131,23 @@ function waterLevelCalculator(char){
     let bowlBody = document.querySelector('.fishBowl')
     const count = document.querySelectorAll('.fishBowl li').length;
     console.log(count);
-    const secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
-    // const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
+    let secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
+    const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
     
-    console.log(secondLi)
+    console.log(secondLi, char)
     
     if(char<30){
         secondLi.remove();
+        thirdLi.remove();
     }
 
     else if(char>30){
-        secondLi.remove();
-        secondLi.remove();
-        secondLi.remove();
-        secondLi.remove();
-        secondLi.remove();
+        for (let i = 0; i < 5; i++) {
+            secondLi.remove();
+            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+        }
+        
+        
 
         // thirdLi.remove();
     }
