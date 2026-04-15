@@ -95,19 +95,20 @@ function waterLevelCalculator(char){
     console.log('remainingWater = ', remainingWater);
     
 
-    let scaredFish = chrome.runtime.getURL("images/guppy scared.png");
-    let cryFish = chrome.runtime.getURL("images/guppy cry.png");
-    let deadFish = chrome.runtime.getURL("images/guppy dead.png");
-    let fish = document.getElementById("fish");
+    let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
+    let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
+    let deadFish = chrome.runtime.getURL("images/guppy-dead.png");
+    let fish = document.querySelector(".fish");
+    console.log(fish.src);
 
-    if(remainingWater == 200){
+    if(remainingWater == 180){
         // change fish to be scared 
-        fish.src ="images/guppy scared.png";
+        fish.src =scaredFish;
     }
 
-    if(remainingWater == 100){
+    if(remainingWater == 120){
         //change fish to cry
-        fish.src = "${cryFish}";
+        fish.src = cryFish;
     }
 
     if(remainingWater == 0){
