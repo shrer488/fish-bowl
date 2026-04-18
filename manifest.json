@@ -5,7 +5,7 @@
   "version": "1.0",
   "permissions": ["scripting", "activeTab"],
   "action": {
-    "default_popup": "test.html"
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "/images/icons/16.png",
@@ -15,7 +15,7 @@
   },
   "content_scripts": [
     {
-      "js": ["scripts/test.js"],
+      "js": ["scripts/bowl.js","scripts/popup.js"],
       
       "matches": [
         "https://chatgpt.com/*"

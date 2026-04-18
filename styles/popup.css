@@ -10,12 +10,12 @@
 
 html{
     background: transparent;
-    border-radius: 0.5rem;
-    border: 0.3rem solid #B6E3E3;
-
+    border: 0.2rem solid #B6E3E3;
+    
 }
 
 body{
+    border-radius: 0.5rem;
     background: #EEFCFC;
     display: flex;
     gap: 1rem;
@@ -41,7 +41,11 @@ body{
             font-size: 0.8rem;
             font-family: "Inclusive Sans", sans-serif;
             font-weight: 400;
-            color: rgba(29, 122, 122, 0.96);
+            color: rgba(29, 122, 122, 0.787);
+        }
+
+        #seeBowl{
+            display: none;
         }
     }
 }

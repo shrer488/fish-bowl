@@ -1,9 +1,5 @@
 
 const url = new URL(window.location.href);
-console.log(url)
-
-const sendButton = document.getElementById('button')
-console.log(document)
 
 
 setTimeout(() => {
@@ -11,6 +7,8 @@ setTimeout(() => {
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
     let normalFish = chrome.runtime.getURL("images/guppy.png");
+    let seeBowl = document.getElementById("seeBowl");
+    console.log(seeBowl);
     
 
     let fishBowl = `
@@ -18,6 +16,7 @@ setTimeout(() => {
     <ul class="fishBowl">
         
         <li>
+        <div class="waterTop"></div>
         <img class="fish" src="${normalFish}" alt="fish">
         </li>
     </ul>
@@ -25,6 +24,10 @@ setTimeout(() => {
     `;
 
     //checking if chatArea even exists
+    // seeBowl.addEventListener("click",()=>{
+        
+    // })
+    
     if (chatArea) {
         chatArea.insertAdjacentHTML("afterbegin", fishBowl); //adding fishbowl
         defaultWaterLine();
@@ -47,7 +50,6 @@ setTimeout(() => {
     // we used aria-label to target the chat box area
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').
     addEventListener('keydown', (event) => {
-        
         
         if(event.key){
             char = char + 1;
@@ -357,17 +359,17 @@ function charReset(char){
 
 
 
-if (url.host == "chatgpt.com"){
-    console.log("CHAT")
-}
+// if (url.host == "chatgpt.com"){
+//     console.log("CHAT")
+// }
 
-else if (url.host == "claude.ai"){
-    console.log("CLAUDE")
-}
+// else if (url.host == "claude.ai"){
+//     console.log("CLAUDE")
+// }
 
-else if (url.host == "gemini.google.com"){
-    console.log("GEMINI")
+// else if (url.host == "gemini.google.com"){
+//     console.log("GEMINI")
 
-}
+// }
 
 
