@@ -1,26 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
 *{
     font-family: 'Courier New', Courier, monospace;
+    color: #1D7A7A;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background: transparent;
+    border-radius: 0.5rem;
+    border: 0.3rem solid #B6E3E3;
+
 }
 
 body{
-    background: #CFF6F6;
+    background: #EEFCFC;
     display: flex;
+    gap: 1rem;
+    align-items: stretch; 
     min-width: 20rem;
+    padding: 0.5rem;
     
-    header{
-        /* display: flex; */
-        h1{
-            font-size: 2rem;
-            margin-block-end: 0.2rem;
-        }
-    
-        p{
-            font-size: 1rem;
+    .guppyProfilePicture{
+
+        img{
+            max-width: 6rem;
         }
     }
 
-    button{
-        padding: 1rem;
-        display: inline-block;
+    header{
+        h1{
+            font-size: 1.4rem;
+            margin-block-end: 0.4rem;
+            font-family: "Lemon", serif;
+        }
+    
+        p{
+            font-size: 0.8rem;
+            font-family: "Inclusive Sans", sans-serif;
+            font-weight: 400;
+            color: rgba(29, 122, 122, 0.96);
+        }
     }
 }

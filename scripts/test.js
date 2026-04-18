@@ -43,6 +43,8 @@ setTimeout(() => {
     // TESTING IF USER HAS SENT A PROMPT
 
     let char = 0;
+
+    // we used aria-label to target the chat box area
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').
     addEventListener('keydown', (event) => {
         
@@ -52,8 +54,7 @@ setTimeout(() => {
             console.log(char);
 
             if (event.key === "Enter" && !event.shiftKey) {
-                //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
-                console.log('Visitor pressed return!')
+                console.log("character from enter key press = ",char)
                 waterLevelCalculator(char);
                 char=0;
                 moveBowl();
@@ -66,11 +67,11 @@ setTimeout(() => {
 	document.addEventListener('click', (event) => {
 		// But only mind clicks within the one we care about:
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
-			console.log('Visitor clicked send button!');
+		    console.log("character from send button press = ",char)
             // let characters = charCounter();
-            waterLevelCalculator(charCounter());
-            moveBowl();
+            waterLevelCalculator(char);
             char = 0;
+            moveBowl();
 
             // charReset(charCounter());
 		}
@@ -81,38 +82,83 @@ setTimeout(() => {
 }, 3000)
 
 
-let waterUsed = 0
-let waterBudget = 210
 
+// WATER IN THE BOWL
+let waterUsed = 0
+let waterBudget = 650
+
+
+// calculating the water level
 function waterLevelCalculator(char){
-    waterUsed = waterUsed + 10; //increased by 10 because we are increasing the token rate by 10l
+    console.log("char =", char)
+    let bowlBody = document.querySelector('.fishBowl')
+    const count = document.querySelectorAll('.fishBowl li').length;
+    // console.log(count);
+    let secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
+    // const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
+    
+    // console.log(secondLi, char)
+
+    if(char<=25){
+        waterUsed = waterUsed + 10;
+        console.log("char<25");
+         for (let i = 0; i < 2; i++) {
+            secondLi.remove();
+            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+        }
+    }
+
+    else if(char>25 && char<=45){
+        waterUsed = waterUsed + 20;
+        console.log("char<45");
+        for (let i = 0; i < 4; i++) {
+            secondLi.remove();
+            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+        }
+    }
+
+    else if(char>45 && char<=75){
+        waterUsed=waterUsed+30;
+        console.log("char>75");
+        for (let i = 0; i < 6; i++) {
+            secondLi.remove();
+            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+        }
+    }
+    
     let remainingWater = waterBudget-waterUsed;
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
-    
 
     let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
     let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
     let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
     let fish = document.querySelector(".fish");
     // console.log(fish.src);
+    
+    if(remainingWater>600){
+        console.log("i am at 600 normal fish");
+            fish.src =normalFish;
+        }
 
-    if(remainingWater == 180){
-        // change fish to be scared 
+    else if(remainingWater>350 && remainingWater<600){
+        console.log("i am at 350 scare fish");
+
         fish.src =scaredFish;
     }
+        
+    else if(remainingWater=1 && remainingWater<=350){
+        console.log("i am at 1 cry fish");
 
-    if(remainingWater == 130){
-        //change fish to cry
         fish.src = cryFish;
     }
 
-    if(remainingWater == 60){
+    else if(remainingWater <= 100){
         fish.classList.remove('applyFishMove');
         fish.classList.add('applyFishShake');
     }
 
-    if(remainingWater == 0){
+    else if(remainingWater == 0){
         console.log("your fish is dead!")
         let fishBowl = document.querySelector("fishBowl");
         let deadFish = `
@@ -125,32 +171,6 @@ function waterLevelCalculator(char){
         fish.add('deadFishPosition')
     }
 
-
-
-
-    let bowlBody = document.querySelector('.fishBowl')
-    const count = document.querySelectorAll('.fishBowl li').length;
-    console.log(count);
-    let secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
-    const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
-    
-    console.log(secondLi, char)
-    
-    if(char<30){
-        secondLi.remove();
-        thirdLi.remove();
-    }
-
-    else if(char>30){
-        for (let i = 0; i < 5; i++) {
-            secondLi.remove();
-            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
-        }
-        
-        
-
-        // thirdLi.remove();
-    }
     
 
 }
@@ -190,7 +210,7 @@ function moveFish(){
 }
 
 
-let char = 0;
+// let char = 0;
 // CHARACTER COUNTER
 function charCounter(){
     char = char + 1;
