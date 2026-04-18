@@ -7,8 +7,9 @@ setTimeout(() => {
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
     let normalFish = chrome.runtime.getURL("images/guppy.png");
-    let seeBowl = document.getElementById("seeBowl");
-    console.log(seeBowl);
+    let grass = chrome.runtime.getURL("images/grass.svg");
+    // let seeBowl = document.getElementById("seeBowl");
+    // console.log(seeBowl);
     
 
     let fishBowl = `
@@ -18,14 +19,16 @@ setTimeout(() => {
         <li>
         <div class="waterTop"></div>
         <img class="fish" src="${normalFish}" alt="fish">
+        <img class="grass" src="${grass}" alt="bowl-decorations">
         </li>
     </ul>
+
     </div>
     `;
 
-    //checking if chatArea even exists
+    // checking if chatArea even exists
     // seeBowl.addEventListener("click",()=>{
-        
+    //     console.log()
     // })
     
     if (chatArea) {
@@ -58,9 +61,9 @@ setTimeout(() => {
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
             if (event.key === "Enter" && !event.shiftKey) {
                 console.log("character from enter key press = ",char)
+                moveBowl();
                 waterLevelCalculator(char);
                 char=0;
-                moveBowl();
             }
         }
 	})
@@ -72,9 +75,9 @@ setTimeout(() => {
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
 		    console.log("character from send button press = ",char)
             // let characters = charCounter();
+            moveBowl();
             waterLevelCalculator(char);
             char = 0;
-            moveBowl();
 
             // charReset(charCounter());
 		}
