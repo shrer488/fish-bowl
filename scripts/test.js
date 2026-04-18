@@ -53,6 +53,7 @@ setTimeout(() => {
             char = char + 1;
             console.log(char);
 
+            //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
             if (event.key === "Enter" && !event.shiftKey) {
                 console.log("character from enter key press = ",char)
                 waterLevelCalculator(char);
