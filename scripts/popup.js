@@ -1,8 +1,8 @@
-seeBowlButton = document.getElementById("seeBowl");
+let seeBowlButton = document.getElementById("seeBowl");
 
-let url = new URL(window.location.href);
-console.log(url)
+let tabUrl = new URL(window.location.href);
+console.log(tabUrl)
 
-if (url.host == "chatgpt.com"){
+if (tabUrl.host == "chatgpt.com"){
     seeBowlButton.style.display="block";
 }

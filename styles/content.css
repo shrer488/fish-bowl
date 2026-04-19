@@ -91,7 +91,7 @@ body{
         }
 
         li:has(.fish) {
-            background-color: rgba(85, 181, 181, 0.419);
+            background-color: #B1DEDF;
             /* border-top-left-radius: 150rem; */
             /* border-top-right-radius: 150rem; */
             border-radius: 100%;

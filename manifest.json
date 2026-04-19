@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Fish bowl",
-  "description": "detect water consumption in AI LLM tools",
+  "name": "Keep Guppy Alive!",
+  "description": "A virtual pet fish named Guppy whose bowl represents ChatGPT's water consumption. Every prompt drops his water level 
+  — keep him alive.",
   "version": "1.0",
   "permissions": ["scripting", "activeTab"],
   "action": {

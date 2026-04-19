@@ -25,11 +25,6 @@ setTimeout(() => {
 
     </div>
     `;
-
-    // checking if chatArea even exists
-    // seeBowl.addEventListener("click",()=>{
-    //     console.log()
-    // })
     
     if (chatArea) {
         chatArea.insertAdjacentHTML("afterbegin", fishBowl); //adding fishbowl
@@ -51,11 +46,12 @@ setTimeout(() => {
     let char = 0;
 
     // we used aria-label to target the chat box area
-	document.querySelector('div[aria-label="Chat with ChatGPT"]').
-    addEventListener('keydown', (event) => {
+    let textArea = document.querySelector('div[aria-label="Chat with ChatGPT"] p');
+
+	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
         
         if(event.key){
-            char = char + 1;
+            char = textArea.textContent.length;
             console.log(char);
 
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
@@ -63,7 +59,7 @@ setTimeout(() => {
                 console.log("character from enter key press = ",char)
                 moveBowl();
                 waterLevelCalculator(char);
-                char=0;
+                // char=0;
             }
         }
 	})
@@ -77,7 +73,7 @@ setTimeout(() => {
             // let characters = charCounter();
             moveBowl();
             waterLevelCalculator(char);
-            char = 0;
+            // char = 0;
 
             // charReset(charCounter());
 		}
