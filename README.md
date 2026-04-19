@@ -1,28 +1,40 @@
-Keep Guppy Alive!
+<h1>Keep Guppy Alive!</h1>
 
-Guppy is a virtual pet fish that lives in your ChatGPT file inside a bowl. The bowl represents ChatGPT's water consumption. Every prompt drops the bowl's water level and leaves Guppy panicking. It is your job to make sure you can keep Guppy alive. Whether that is by shortening your prompts or not using ChatGPT at all.
+<p>Guppy is a virtual pet fish that lives in your ChatGPT tab inside a bowl. The bowl represents ChatGPT's water consumption. Every prompt drops the bowl's water level and leaves Guppy panicking. It is your job to make sure you can keep Guppy alive whether that is by shortening your prompts or not using ChatGPT at all.</p>
 
-What it does
-AI data centers consume real freshwater to cool their servers. Guppy is a visual representation of that cost. Each time you send a prompt on ChatGPT, his water level drops a little more.
-How it works
+<hr>
 
-Guppy lives in your browser as a Chrome extension popup
-His water level is calculated based on the number of characters in each prompt you send
-The longer prompt you send, the more water he loses
-The goal is to keep him alive
+<h2>How it works</h2>
 
-Backstory
-The idea came to me during our Typography and Interaction class at Parsons, we were talking about AI and how we do not know about its cost on the environment. Our professor explained this theory interms of water tanks. This made me wonder what if we could see these water tanks, and hence the Fish Bowl was born. 
+<ul>
+  <li>Guppy lives in your browser as a Chrome extension popup</li>
+  <li>His water level is calculated based on the number of characters in each prompt you send</li>
+  <li>The longer the prompt, the more water he loses</li>
+  <li>The goal is to keep him alive</li>
+</ul>
 
-Design
-For design, I wanted the user to form an attachment with the little goldfish Guppy and this desire to take care of him, with a hope that it translates to desire to take care of the ocean. While building 
+<hr>
 
-What is interesting about this project is the amount of times I ran out of free ChatGPT model so I can test whether the code works or not, which is ironic cause my goal was to make users keep the fish alive.
+<h2>Backstory</h2>
 
-Installation
+<p>The idea came to me during my Typography and Interaction class at Parsons. We were talking about AI and how we often don't know about its cost on the environment. My professor explained this in terms of water tanks and I wondered, what if we could actually see those water tanks? And so the fish bowl was born.</p>
 
-Clone this repository
-Open Chrome and go to chrome://extensions
-Enable Developer mode in the top right
-Click Load unpacked and select the project folder
-Guppy will appear in your extensions bar
+<hr>
+
+<h2>Design</h2>
+
+<p>For the design, I wanted the user to form an attachment with the little goldfish Guppy — a desire to take care of him — with the hope that it translates into a desire to take care of the ocean.</p>
+
+<p>What is interesting about this project is the number of times I ran out of free ChatGPT usage while testing whether the code worked, which is ironic, considering my goal was to make users keep the fish alive.</p>
+
+<hr>
+
+<h2>Installation</h2>
+
+<ol>
+  <li>Clone this repository</li>
+  <li>Open Chrome and go to <code>chrome://extensions</code></li>
+  <li>Enable <strong>Developer mode</strong> in the top right</li>
+  <li>Click <strong>Load unpacked</strong> and select the project folder</li>
+  <li>Guppy will appear in your extensions bar</li>
+</ol>
