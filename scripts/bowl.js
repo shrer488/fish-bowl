@@ -21,7 +21,7 @@ setTimeout(() => {
         <img class="fish" src="${normalFish}" alt="fish">
         <img class="grass" src="${grass}" alt="bowl-decorations">
         </li>
-    </ul>
+        </ul>
 
     </div>
     `;

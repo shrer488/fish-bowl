@@ -90,7 +90,7 @@ body{
             top: 2.5rem;
         }
 
-        li:has(img) {
+        li:has(.fish) {
             background-color: rgba(85, 181, 181, 0.419);
             /* border-top-left-radius: 150rem; */
             /* border-top-right-radius: 150rem; */
