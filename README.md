@@ -1,3 +1,4 @@
+<img src="images/guppy.png" alt="Guppy" width="80"> 
 <h1>Keep Guppy Alive!</h1>
 
 <p>Guppy is a virtual pet fish that lives in your ChatGPT tab inside a bowl. The bowl represents ChatGPT's water consumption. Every prompt drops the bowl's water level and leaves Guppy panicking. It is your job to make sure you can keep Guppy alive whether that is by shortening your prompts or not using ChatGPT at all.</p>
