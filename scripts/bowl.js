@@ -14,15 +14,16 @@ setTimeout(() => {
 
     let fishBowl = `
     <div class="bowlArea applyBowlAppear">
-    <ul class="fishBowl">
+    
+        <ul class="fishBowl">
         
-        <li>
-        <div class="waterTop"></div>
-        <img class="fish" src="${normalFish}" alt="fish">
-        <img class="grass" src="${grass}" alt="bowl-decorations">
-        </li>
+            <li>
+            <div class="waterTop"></div>
+            <img class="fish" src="${normalFish}" alt="fish">
+            <img class="grass" src="${grass}" alt="bowl-decorations">
+            </li>
         </ul>
-
+    
     </div>
     `;
     
@@ -44,7 +45,8 @@ setTimeout(() => {
     // TESTING IF USER HAS SENT A PROMPT
 
     let char = 0;
-
+    let fish = document.querySelector(".fish");
+    
     // we used aria-label to target the chat box area
     let textArea = document.querySelector('div[aria-label="Chat with ChatGPT"] p');
 
@@ -56,10 +58,11 @@ setTimeout(() => {
 
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
             if (event.key === "Enter" && !event.shiftKey) {
-                console.log("character from enter key press = ",char)
                 moveBowl();
+                // fish.classList.add('applyInitialFishShake');
                 waterLevelCalculator(char);
-                // char=0;
+                
+
             }
         }
 	})
@@ -69,16 +72,12 @@ setTimeout(() => {
 	document.addEventListener('click', (event) => {
 		// But only mind clicks within the one we care about:
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
-		    console.log("character from send button press = ",char)
-            // let characters = charCounter();
+            char = textArea.textContent.length;
             moveBowl();
+                // fish.classList.add('applyInitialFishShake');
             waterLevelCalculator(char);
-            // char = 0;
-
-            // charReset(charCounter());
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
-
 
 
 }, 3000)
@@ -92,87 +91,71 @@ let waterBudget = 650
 
 // calculating the water level
 function waterLevelCalculator(char){
-    console.log("char =", char)
+    // console.log("char =", char)
     let bowlBody = document.querySelector('.fishBowl')
     const count = document.querySelectorAll('.fishBowl li').length;
-    // console.log(count);
     let secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
-    // const thirdLi = bowlBody.querySelector('li:nth-child(3)'); // second child cause the first child is the fish lol
     
-    // console.log(secondLi, char)
 
     if(char<=25){
         waterUsed = waterUsed + 10;
-        console.log("char<25");
+        console.log("char<25 and list count=",count);
+        showWaterDecrease(10);
          for (let i = 0; i < 2; i++) {
+            console.log("count =",count);
+            if (count!=1){
             secondLi.remove();
             secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+            fishReaction(count);
+            }
+
+            else{
+            guppyDeath();
+            }
         }
+
     }
 
     else if(char>25 && char<=45){
         waterUsed = waterUsed + 20;
-        console.log("char<45");
-        for (let i = 0; i < 4; i++) {
+        console.log("char<45 and list count=",count);
+        showWaterDecrease(20);
+
+        for (let i = 0; i < 6; i++) {
+            console.log("count =",count);
+            if (count!=1){
             secondLi.remove();
             secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+            fishReaction(count);
+            }
+            else{
+            guppyDeath();
+            }
         }
     }
 
-    else if(char>45 && char<=75){
+    else if(char>45){
         waterUsed=waterUsed+30;
-        console.log("char>75");
-        for (let i = 0; i < 6; i++) {
-            secondLi.remove();
-            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+        console.log("char>75 and list count=",count);
+        showWaterDecrease(30);
+
+        for (let i = 0; i < 10; i++) {
+            if (count!=1){
+                console.log("count =",count);
+                secondLi.remove();
+                secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
+                fishReaction(count);
+            }
+
+            else{
+            guppyDeath();
+            }
         }
     }
     
     let remainingWater = waterBudget-waterUsed;
     console.log('waterUsed = ', waterUsed)
     console.log('remainingWater = ', remainingWater);
-
-    let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
-    let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
-    let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
-    let fish = document.querySelector(".fish");
-    // console.log(fish.src);
-    
-    if(remainingWater>600){
-        console.log("i am at 600 normal fish");
-            fish.src =normalFish;
-        }
-
-    else if(remainingWater>350 && remainingWater<600){
-        console.log("i am at 350 scare fish");
-
-        fish.src =scaredFish;
-    }
-        
-    else if(remainingWater=1 && remainingWater<=350){
-        console.log("i am at 1 cry fish");
-
-        fish.src = cryFish;
-    }
-
-    else if(remainingWater <= 100){
-        fish.classList.remove('applyFishMove');
-        fish.classList.add('applyFishShake');
-    }
-
-    else if(remainingWater == 0){
-        console.log("your fish is dead!")
-        let fishBowl = document.querySelector("fishBowl");
-        let deadFish = `
-        <p>Your fish died!</p>
-        `
-        let bowlArea = document.querySelector('.bowlArea');
-        bowlArea.insertAdjacentHTML("afterbegin",deadFish);
-        fish.src = deadFishImage;
-        fish.classList.remove('applyFishShake');
-        fish.add('deadFishPosition')
-    }
-
     
 
 }
@@ -212,163 +195,87 @@ function moveFish(){
 }
 
 
-// let char = 0;
-// CHARACTER COUNTER
-function charCounter(){
-    char = char + 1;
-    return char;
+
+function fishReaction(count){
+    // Changing fish expressions
+    let normalFish = chrome.runtime.getURL("images/guppy.png");
+    let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
+    let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
+    let fish = document.querySelector(".fish");
+    // console.log(fish.src);
+    fish.classList.remove('applyInitialFishShake');
+    
+
+    // number of water level is 65, if we subtract the fish then it is 64.
+    // we want the fish to have 4 modes normal-scared-cry-dead
+    // dead is final stage so we want it to have 3 modes
+    // now we divide 64 by 3 => 21.33 ~ 22
+    // so x < 22 < 54(it was supposed to be 44 but thought users needed to see the impact early on) < 64
+    // which means:
+    
+    if(count==64 || count==65 || count==66){
+        firstShock(fish);   
+    }
+
+    // Cry mode
+    if(count<=22){
+        fish.src = cryFish;
+        fish.classList.remove('applyFishMove');
+        fish.classList.add('applyFishShake');
+    }
+
+    // Scared mode
+    else if(count<=60){
+        fish.src = scaredFish;
+    }
+    
+    else if(count<64){
+        fish.src = normalFish;
+    }
+}
+
+
+function firstShock(fish){
+    let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
+    let normalFish = chrome.runtime.getURL("images/guppy.png");
+    fish.src=scaredFish;
+    fish.classList.add('applyInitialFishShake');
+    fish.addEventListener('animationend', () => {
+    fish.classList.remove('applyInitialFishShake');
+    fish.src=normalFish;
+    }, { once: true });
+}
+
+function guppyDeath(){
+    // Dead mode
+        console.log("your fish is dead!");
+        let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
+        let bowlArea = document.querySelector('.bowlArea');
+
+        let deadFish = `
+        <p>Guppy died!</p>
+        `
+        bowlArea.insertAdjacentHTML("afterbegin",deadFish); 
+        fish.src = deadFishImage;
+        fish.classList.remove('applyFishShake');
+        fish.classList.add('deadFishPosition');
     
 }
 
-function charReset(char){
-    char = 0;
+function showWaterDecrease(waterUsed){
+    let waterDecrease =`
+    <p class="waterNotif">-${waterUsed}</p>
+    `
+    let bowlArea = document.querySelector('.bowlArea');
+    bowlArea.insertAdjacentHTML("afterbegin",waterDecrease); 
+
+    let Notif = bowlArea.querySelector(".waterNotif")
+    Notif.classList.add('.applywaterNotifAppear');
+    Notif.addEventListener('animationend', () => {
+    Notif.classList.remove('.applywaterNotifAppear');
+    }, { once: true });
+
+        setTimeout(() => {
+            document.querySelector(".waterNotif").remove();
+        }, 2000);
 }
-
-
-
-//adding waterbowl
-// let fishBowl = document.createElement('ul')
-// console.log(fishBowl)
-
-// const field = document.getElementsByTagName('main')
-
-// document.body.appendChild(fishBowl)
-// let waterLevel =`
-//        <p>hello</p>
-//         ` 
-
-// fishBowl.insertAdjacentHTML('beforeend', waterLevel)
-// let chatArea =document.querySelector('div[aria-label="Chat with ChatGPT"]');
-// document.getElementById("parentElementId").appendChild(waterLevel);
-
-
-
-
-// function bowlRefill(){
-//         let waterLevel =`
-//         <li class='waterLevel'>
-//         </li>
-//         `
-//         let msgValue=10
-
-//         for(let i=0; i< waterBudget; i+msgValue){
-//             fishBowl.insertAdjacentHTML('beforeend', waterLevel)
-//             console.log(i)
-//         }
-// }
-
-
-
-// const tokenBudget = 300;
-// let totalToken=0;
-
-// for (let newToken=0; totalToken < tokenBudget; newToken++) {
-//     totalToken = totalToken+10;
-//     console.log("The number is " + i);
-// }
-// let userBudget = tokenBudget-totalToken;
-// console.log(userBudget);
-
-
-
-
-// let messege = 10;
-// if user sends token then their total token is subtracted by 10;
-// now new total token = total token - message
-// at first total token = 300
-// so total token = token budget
-// now user starts using ai
-// so total token = total token - message
-// this loops everytime user sends message
-// so for how long?
-// if user sends message then this subtraction function is called
-// so subtraction function is (total token = total token - message)
-// for now to test lets say user sends 10 messages
-
-
-
-
-
-
-
-
-
-// console.log(document.getElementsByTagName('div[aria-label="Chat with ChatGPT"]'))
-
-
-
-// console.log(sendButton.dataset)
-// sendButton.addEventListener('click', ()=>{
-//     console.log('clicked')
-// })
-
-// console.log(document.querySelector('div[aria-label="Chat with ChatGPT"]'))
-// document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
-// 	if (event.key === 'Enter') {
-// 		console.log('Visitor pressed return when typing!')
-// 	}
-// })
-
-// document.querySelector('div[aria-label="Send prompt"]').addEventListener('click', (event) => {
-// 	console.log('Visitor clicked send button!')
-// })
-
-
-// MutationObserver CODE 
-
-// const observer = new MutationObserver(() => {
-//   console.log("something changed in page");
-    
-// });
-
-// let newDoc = document.querySelector('div[aria-label="Chat with ChatGPT"]')
-
-// observer.observe(newDoc, {
-//   childList: true,
-//   subtree: true,
-// }); 
-
-
-// -----
-//need to add a mutation observer thing to check if the sendButton exists and is clicked
-
-// window.addEventListener('load', function () {
-//     const textfield = document.getElementById('prompt-textarea')
-//     console.log(textfield)
-
-// //     textfield.addEventListener("keydown", () => {
-// //   console.log("Key pressed");
-// //     });
-
-// // const buttons = document.getElementsByTagName('button')
-// // sendButton.addEventListener('keydown',(event)=>{
-// //     if(event.key =='Enter'){
-// //         console.log('pressed');
-// //     }
-// // })
-  
-    
-// })
-
-
-// -----
-
-
-
-
-
-
-// if (url.host == "chatgpt.com"){
-//     console.log("CHAT")
-// }
-
-// else if (url.host == "claude.ai"){
-//     console.log("CLAUDE")
-// }
-
-// else if (url.host == "gemini.google.com"){
-//     console.log("GEMINI")
-
-// }
-
-
