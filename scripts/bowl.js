@@ -1,39 +1,52 @@
 
-const url = new URL(window.location.href);
-
+const url = new URL(window.location.href); 
 
 setTimeout(() => {
-
     // CREATING WATER BOWL
     const chatArea = document.querySelector("body");
     let normalFish = chrome.runtime.getURL("images/guppy.png");
     let grass = chrome.runtime.getURL("images/grass.svg");
     // let seeBowl = document.getElementById("seeBowl");
     // console.log(seeBowl);
-    
 
     let fishBowl = `
     <div class="bowlArea applyBowlAppear">
-    
         <ul class="fishBowl">
-        
-            <li>
-            <div class="waterTop"></div>
-            <img class="fish" src="${normalFish}" alt="fish">
-            <img class="grass" src="${grass}" alt="bowl-decorations">
+            <li class="water">
+                <div class="waterTop"></div>
+                <div class="waterLevel"></div>
+            </li>
+            <li class="innerBowl">
+                <img class="fish" src="${normalFish}" alt="fish">
+                <img class="grass" src="${grass}" alt="bowl-decorations">
             </li>
         </ul>
-    
     </div>
     `;
+
+
+    // WATER IN THE BOWL
+    let waterUsed = 0;
+    let waterBudget = 80;
+    let waterLevel;
     
+    let char = 0;
+    let fish;
+    
+    // ADDING FISH BOWL
     if (chatArea) {
-        chatArea.insertAdjacentHTML("afterbegin", fishBowl); //adding fishbowl
-        defaultWaterLine();
+        chatArea.insertAdjacentHTML("afterbegin", fishBowl);
     } 
     else {
         console.log("chatArea not found");
     }
+
+    waterLevel = document.querySelector('.waterLevel');
+    fish = document.querySelector(".fish");
+    
+    // DEFAULT WATER LINE
+    waterLevel.style.height = `${waterBudget}%`;
+
 
     
     // making the fish move around the bowl
@@ -42,11 +55,7 @@ setTimeout(() => {
     
     
     
-    // TESTING IF USER HAS SENT A PROMPT
-
-    let char = 0;
-    let fish = document.querySelector(".fish");
-    
+    // TESTING IF USER HAS SENT A PROMPT    
     // we used aria-label to target the chat box area
     let textArea = document.querySelector('div[aria-label="Chat with ChatGPT"] p');
 
@@ -54,15 +63,15 @@ setTimeout(() => {
         
         if(event.key){
             char = textArea.textContent.length;
-            console.log(char);
 
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
             if (event.key === "Enter" && !event.shiftKey) {
                 moveBowl();
-                // fish.classList.add('applyInitialFishShake');
-                waterLevelCalculator(char);
-                
-
+                if (waterBudget > 20) {
+                    waterLevelCalculator(char);
+                } else {
+                    guppyDeath();
+                }
             }
         }
 	})
@@ -74,105 +83,36 @@ setTimeout(() => {
 		if (event.target.closest('button[aria-label="Send prompt"]')) {
             char = textArea.textContent.length;
             moveBowl();
-                // fish.classList.add('applyInitialFishShake');
-            waterLevelCalculator(char);
+
+            if (event.key === "Enter" && !event.shiftKey) {
+                moveBowl();
+                if (waterBudget > 20) {
+                    waterLevelCalculator(char);
+                } else {
+                    guppyDeath();
+                }
+            }
 		}
 	}, true) // "Capture" phase since they probably use `stopPropagation()` somewhere!
 
-
-}, 3000)
-
-
-
-// WATER IN THE BOWL
-let waterUsed = 0
-let waterBudget = 650
-
-
 // calculating the water level
 function waterLevelCalculator(char){
-    // console.log("char =", char)
-    let bowlBody = document.querySelector('.fishBowl')
-    const count = document.querySelectorAll('.fishBowl li').length;
-    let secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second child cause the first child is the fish lol
-    
-
     if(char<=25){
+        waterUsed = waterUsed + 5;
+        showWaterDecrease(5);
+    } else if(char>25 && char<=45) {
         waterUsed = waterUsed + 10;
-        console.log("char<25 and list count=",count);
         showWaterDecrease(10);
-         for (let i = 0; i < 2; i++) {
-            console.log("count =",count);
-            if (count!=1){
-            secondLi.remove();
-            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
-            fishReaction(count);
-            }
-
-            else{
-            guppyDeath();
-            }
-        }
-
+    } else if(char>45) {
+        waterUsed = waterUsed + 15;
+        showWaterDecrease(15);
     }
 
-    else if(char>25 && char<=45){
-        waterUsed = waterUsed + 20;
-        console.log("char<45 and list count=",count);
-        showWaterDecrease(20);
-
-        for (let i = 0; i < 6; i++) {
-            console.log("count =",count);
-            if (count!=1){
-            secondLi.remove();
-            secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
-            fishReaction(count);
-            }
-            else{
-            guppyDeath();
-            }
-        }
-    }
-
-    else if(char>45){
-        waterUsed=waterUsed+30;
-        console.log("char>75 and list count=",count);
-        showWaterDecrease(30);
-
-        for (let i = 0; i < 10; i++) {
-            if (count!=1){
-                console.log("count =",count);
-                secondLi.remove();
-                secondLi = bowlBody.querySelector('li:nth-last-child(2)'); // second 
-                fishReaction(count);
-            }
-
-            else{
-            guppyDeath();
-            }
-        }
-    }
-    
-    let remainingWater = waterBudget-waterUsed;
-    console.log('waterUsed = ', waterUsed)
-    console.log('remainingWater = ', remainingWater);
-    
-
+    waterBudget = waterBudget - waterUsed;
+    fishReaction(waterBudget);
+    waterLevel.style.height = `${waterBudget}%`;
+    // fish.style.top = `${10 + waterUsed}%`;
 }
-
-
-// DEFAULT WATER LEVEL
-function defaultWaterLine(){
-    let bowlBody = document.querySelector('.fishBowl')
-    console.log(bowlBody)
-    
-    //looped to add water level according to how much water budget we assign
-    for(let i=0; i <(waterBudget/10); i++){
-        bowlBody.insertAdjacentHTML("afterbegin",`<li></li>`);
-    }
-    
-}
-
 
 // Moving bowl function
 // for shaking the bowl when water level decreases
@@ -190,11 +130,8 @@ function moveBowl(){
 
 function moveFish(){
     let fish = document.querySelector(".fish");
-    console.log(fish);
     fish.classList.add('applyFishMove');
 }
-
-
 
 function fishReaction(count){
     // Changing fish expressions
@@ -267,7 +204,7 @@ function showWaterDecrease(waterUsed){
     <p class="waterNotif">-${waterUsed}</p>
     `
     let bowlArea = document.querySelector('.bowlArea');
-    bowlArea.insertAdjacentHTML("afterbegin",waterDecrease); 
+    bowlArea.insertAdjacentHTML("afterbegin",waterDecrease);
 
     let Notif = bowlArea.querySelector(".waterNotif")
     Notif.classList.add('.applywaterNotifAppear');
@@ -279,3 +216,5 @@ function showWaterDecrease(waterUsed){
             document.querySelector(".waterNotif").remove();
         }, 2000);
 }
+
+}, 3000)
