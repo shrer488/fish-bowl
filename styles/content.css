@@ -14,6 +14,9 @@ body{
         pointer-events: none;
         display: flex;
         flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
 
         p{
             /* position: absolute;
@@ -32,7 +35,7 @@ body{
             border: 0.4rem solid #B6E3E3;
             background: #EEFCFC;
             width: fit-content;
-            align-items: self-start;
+            align-items: center;
         }
 
         /* .grass {
@@ -93,7 +96,7 @@ body{
           top: 30%;
           pointer-events: all;
       }
-      
+
       .applyFishShake{
         animation-name: fishShake;
         animation-duration: 1s;

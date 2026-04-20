@@ -6,8 +6,7 @@ setTimeout(() => {
     const chatArea = document.querySelector("body");
     let normalFish = chrome.runtime.getURL("images/guppy.png");
     let grass = chrome.runtime.getURL("images/grass.svg");
-    // let seeBowl = document.getElementById("seeBowl");
-    // console.log(seeBowl);
+    let waterNotif
 
     let fishBowl = `
     <div class="bowlArea applyBowlAppear">
@@ -43,8 +42,9 @@ setTimeout(() => {
 
     waterLevel = document.querySelector('.waterLevel');
     fish = document.querySelector(".fish");
-    
+
     // DEFAULT WATER LINE
+    // using percentage to show the height of the water level based on the water budget, right now it is 80% because I did not want the water to be all the way to the top.
     waterLevel.style.height = `${waterBudget}%`;
 
 
@@ -62,12 +62,13 @@ setTimeout(() => {
 	document.querySelector('div[aria-label="Chat with ChatGPT"]').addEventListener('keydown', (event) => {
         
         if(event.key){
+            // this code checks the length of the content in the text area
             char = textArea.textContent.length;
 
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
             if (event.key === "Enter" && !event.shiftKey) {
                 moveBowl();
-                if (waterBudget > 20) {
+                if (waterBudget > 10) { //here if the water level is less than 10 then guppy dies
                     waterLevelCalculator(char);
                 } else {
                     guppyDeath();
@@ -86,7 +87,7 @@ setTimeout(() => {
 
             if (event.key === "Enter" && !event.shiftKey) {
                 moveBowl();
-                if (waterBudget > 20) {
+                if (waterBudget > 10) {
                     waterLevelCalculator(char);
                 } else {
                     guppyDeath();
@@ -98,13 +99,13 @@ setTimeout(() => {
 // calculating the water level
 function waterLevelCalculator(char){
     if(char<=25){
-        waterUsed = waterUsed + 5;
+        waterUsed = waterUsed + 2;
         showWaterDecrease(5);
     } else if(char>25 && char<=45) {
-        waterUsed = waterUsed + 10;
+        waterUsed = waterUsed + 4;
         showWaterDecrease(10);
     } else if(char>45) {
-        waterUsed = waterUsed + 15;
+        waterUsed = waterUsed + 6;
         showWaterDecrease(15);
     }
 
@@ -212,9 +213,9 @@ function showWaterDecrease(waterUsed){
     Notif.classList.remove('.applywaterNotifAppear');
     }, { once: true });
 
-        setTimeout(() => {
-            document.querySelector(".waterNotif").remove();
-        }, 2000);
+        // setTimeout(() => {
+        //     document.querySelector(".waterNotif").remove();
+        // }, 2000);
 }
 
 }, 3000)
