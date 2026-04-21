@@ -6,7 +6,7 @@ setTimeout(() => {
     const chatArea = document.querySelector("body");
     let normalFish = chrome.runtime.getURL("images/guppy.png");
     let grass = chrome.runtime.getURL("images/grass.svg");
-    let waterNotif
+    
 
     let fishBowl = `
     <div class="bowlArea applyBowlAppear">
@@ -98,13 +98,21 @@ setTimeout(() => {
 
 // calculating the water level
 function waterLevelCalculator(char){
+
+    //short length characters
     if(char<=25){
         waterUsed = waterUsed + 2;
         showWaterDecrease(5);
-    } else if(char>25 && char<=45) {
+    } 
+    
+    //medium length characters
+    else if(char>25 && char<=45) {
         waterUsed = waterUsed + 4;
         showWaterDecrease(10);
-    } else if(char>45) {
+    } 
+    
+    //long length characters
+    else if(char>45) {
         waterUsed = waterUsed + 6;
         showWaterDecrease(15);
     }
@@ -112,7 +120,14 @@ function waterLevelCalculator(char){
     waterBudget = waterBudget - waterUsed;
     fishReaction(waterBudget);
     waterLevel.style.height = `${waterBudget}%`;
-    // fish.style.top = `${10 + waterUsed}%`;
+    console.log(waterLevel)
+    // fish.style.top=fish.style.top+10%
+    if(waterBudget>35){
+        fish.style.top = `${80-waterBudget+30}%`;
+    }
+    else{
+        fish.style.top = `${80-waterBudget+10}%`;
+    }
 }
 
 // Moving bowl function
@@ -139,50 +154,25 @@ function fishReaction(count){
     let normalFish = chrome.runtime.getURL("images/guppy.png");
     let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
     let cryFish = chrome.runtime.getURL("images/guppy-cry.png");
-    let fish = document.querySelector(".fish");
-    // console.log(fish.src);
-    fish.classList.remove('applyInitialFishShake');
     
-
-    // number of water level is 65, if we subtract the fish then it is 64.
-    // we want the fish to have 4 modes normal-scared-cry-dead
-    // dead is final stage so we want it to have 3 modes
-    // now we divide 64 by 3 => 21.33 ~ 22
-    // so x < 22 < 54(it was supposed to be 44 but thought users needed to see the impact early on) < 64
-    // which means:
-    
-    if(count==64 || count==65 || count==66){
-        firstShock(fish);   
-    }
 
     // Cry mode
-    if(count<=22){
-        fish.src = cryFish;
-        fish.classList.remove('applyFishMove');
-        fish.classList.add('applyFishShake');
+   if(count <= 25){
+    fish.src = cryFish;
+    fish.classList.remove('applyFishMove');
+    fish.classList.add('applyFishShake');
     }
 
-    // Scared mode
-    else if(count<=60){
+    else if(count > 25 && count <= 65){
         fish.src = scaredFish;
+        fishCommentary("I am scared..")
     }
-    
-    else if(count<64){
+
+    else if(count > 65 && count <= 75){
         fish.src = normalFish;
     }
 }
 
-
-function firstShock(fish){
-    let scaredFish = chrome.runtime.getURL("images/guppy-scared.png");
-    let normalFish = chrome.runtime.getURL("images/guppy.png");
-    fish.src=scaredFish;
-    fish.classList.add('applyInitialFishShake');
-    fish.addEventListener('animationend', () => {
-    fish.classList.remove('applyInitialFishShake');
-    fish.src=normalFish;
-    }, { once: true });
-}
 
 function guppyDeath(){
     // Dead mode
@@ -191,7 +181,7 @@ function guppyDeath(){
         let bowlArea = document.querySelector('.bowlArea');
 
         let deadFish = `
-        <p>Guppy died!</p>
+        <p class="guppyDeath">Guppy died!</p>
         `
         bowlArea.insertAdjacentHTML("afterbegin",deadFish); 
         fish.src = deadFishImage;
@@ -200,11 +190,14 @@ function guppyDeath(){
     
 }
 
+
+// Function for notification that pops up below the bowl to show how much water has been used.
 function showWaterDecrease(waterUsed){
     let waterDecrease =`
-    <p class="waterNotif">-${waterUsed}</p>
+    <li class="waterNotif">-${waterUsed}</li>
     `
-    let bowlArea = document.querySelector('.bowlArea');
+
+    let bowlArea = document.querySelector('.fishBowl');
     bowlArea.insertAdjacentHTML("afterbegin",waterDecrease);
 
     let Notif = bowlArea.querySelector(".waterNotif")
@@ -213,9 +206,23 @@ function showWaterDecrease(waterUsed){
     Notif.classList.remove('.applywaterNotifAppear');
     }, { once: true });
 
-        // setTimeout(() => {
-        //     document.querySelector(".waterNotif").remove();
-        // }, 2000);
+        setTimeout(() => {
+            document.querySelector(".waterNotif").remove();
+        }, 1500);
+}
+
+function fishCommentary(said){
+    let comment = 
+    `
+    <p class="comment">${said}</p>
+    `
+    let bowlArea = document.querySelector('.bowlArea');
+     bowlArea.insertAdjacentHTML("afterbegin",comment); 
+
+     setTimeout(()=>{
+        document.querySelector(".comment").remove();
+     }, 1000);
+
 }
 
 }, 3000)

@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap');
+
 
 body{
     font-family: "Inclusive Sans", sans-serif;
@@ -13,34 +15,51 @@ body{
         right:5%;
         pointer-events: none;
         display: flex;
-        flex-direction: column-reverse;
+        /* flex-direction: column-reverse; */
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
 
-        p{
-            /* position: absolute;
-            z-index: 1; */
-            /* padding: 1rem;
-            background-color: rgb(255, 251, 247);
-            border: 0.2rem solid rgb(181, 181, 181);
-            border-radius: 2rem; */
-        }
-        .waterNotif,p{
-            color: #1D7A7A ;
-            padding: 0.2rem;
+       
+        color: #1D7A7A;
+
+        .comment{
+            position: absolute;
+            border-radius: 100rem;
+            background: #E56E2F;
+            color: white;
+            padding: 0.5rem 1rem;
             font-size: 1rem;
-            font-weight: 500;
-            border-radius:0.4rem;
-            border: 0.4rem solid #B6E3E3;
-            background: #EEFCFC;
+            border: none;
+        }
+
+        .guppyDeath{
+            position: absolute;
+            border: 0.4rem solid #D0D0D0;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            background: #E6E6E6;
+            color: #212121;
             width: fit-content;
             align-items: center;
         }
 
-        /* .grass {
-            mask-image: radial-gradient(ellipse at center, black 70%, transparent 71%);
-        } */
+        .waterNotif{
+            position: absolute;
+            display: inline-block;
+            z-index: 1;
+             left: 50%;
+            transform: translate(-50%, -50%);
+            top: 30%;
+           padding: 0.2rem 1rem;
+           border-radius: 100rem;
+           background: #B1DEDF;
+           color: #1D7A7A;
+           font-size: 1rem;
+           font-weight: 600;
+        }
     }
 
     .fishBowl{
@@ -72,7 +91,7 @@ body{
           height: 1rem;
           border-radius: 100rem;
           transform: translateY(0.5rem);
-        mask-image: radial-gradient(ellipse 60% 40% at 50% 50%, black 100%, transparent 100%);
+        mask-image: radial-gradient(50% 42%, black 100%, transparent 100%);
       }
 
 
@@ -97,6 +116,10 @@ body{
           pointer-events: all;
       }
 
+      .fish:hover{
+       transform: scale(1.4);
+      }
+
       .applyFishShake{
         animation-name: fishShake;
         animation-duration: 1s;
@@ -107,7 +130,8 @@ body{
       /* Fixing the position of fish when it dies */
       .deadFishPosition{
         top: 7.5rem;
-        left: 3rem;
+        left: 4rem;
+        z-index: 1;
       }
       .grass{
           position: absolute;
@@ -143,16 +167,16 @@ body{
 
 /* Water level notification */
 @keyframes waterNotifAppear {
-    0% { transform: translateY(0) }
-    25% { transform: translateY(0.5rem) }
-    50% { transform: translateY(-0.5rem) }
-    75% { transform: translateY(0.5rem) }
-    100% { transform: translateY(0) }
+     0% { opacity: 0; transform: translateY(-0.5rem) }
+    25% { opacity: 1; transform: translateY(0rem) }
+    50% { opacity: 1; transform: translateY(0rem) }
+    75% { opacity: 0; transform: translateY(0.5rem) }
+    100% { opacity: 0; }
 }
 
 .applywaterNotifAppear{
-    animation: waterNotifAppear;
-    animation-duration: 0.4s;
+    animation: waterNotifAppear 4s;
+    /* animation-duration: 0.4s; */
 }
 
 /* Bowl shake on message sent */
