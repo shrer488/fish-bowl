@@ -144,11 +144,13 @@ function moveBowl(){
     }, { once: true });
 }
 
+// Moving fish in the bowl
 function moveFish(){
     let fish = document.querySelector(".fish");
     fish.classList.add('applyFishMove');
 }
 
+// Fish's reaction in different states
 function fishReaction(count){
     // Changing fish expressions
     let normalFish = chrome.runtime.getURL("images/guppy.png");
@@ -173,7 +175,7 @@ function fishReaction(count){
     }
 }
 
-
+// Fish's death
 function guppyDeath(){
     // Dead mode
         console.log("your fish is dead!");
@@ -211,6 +213,7 @@ function showWaterDecrease(waterUsed){
         }, 1500);
 }
 
+// Fish's "I'm scared" commentary
 function fishCommentary(said){
     let comment = 
     `
