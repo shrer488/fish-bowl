@@ -18,7 +18,7 @@
 
 <h2>Backstory</h2>
 
-<p>The idea came to me during my Typography and Interaction class at Parsons. We were talking about AI and how we often don't know about its cost on the environment. My professor explained this in terms of water tanks and I wondered, what if we could actually see those water tanks? And so the fish bowl was born.</p>
+<p>The idea came to me during my Typography and Interaction class at Parsons. We were talking about AI and how we often don't know about its cost on the environment. My professor explained this in terms of water tanks and how each one of us has a water tank of servers can use to cool it. This made me wonder, what if we could actually see those water tanks? And so the fish bowl was born.</p>
 
 <hr>
 
