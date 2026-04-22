@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Keep Guppy Alive!",
-  "description": "A virtual pet fish named Guppy whose bowl represents ChatGPT's water consumption. Every prompt drops his water level — keep him alive.",
+  "description": "Virtual pet fish named Guppy whose bowl represents ChatGPT's water consumption. Every prompt drops his water level — keep him alive.",
   "version": "1.0",
   "permissions": ["scripting", "activeTab"],
   "action": {
