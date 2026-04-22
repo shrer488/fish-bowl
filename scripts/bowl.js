@@ -55,7 +55,8 @@ setTimeout(() => {
     
     
     
-    // TESTING IF USER HAS SENT A PROMPT    
+    // TESTING IF USER HAS SENT A PROMPT
+    // Michael helped with this one. I was having issues with selecting the chat text area due to no specific class name, so he used aria-label to target it. When pressing send button he used closest to the button name.    
     // we used aria-label to target the chat box area
     let textArea = document.querySelector('div[aria-label="Chat with ChatGPT"] p');
 
@@ -102,7 +103,7 @@ function waterLevelCalculator(char){
     //short length characters
     if(char<=25){
         waterUsed = waterUsed + 2;
-        showWaterDecrease(5);
+        showWaterDecrease(5); // the numbers that we are sending here is not accurate to how much water is decreasing, but it gives users idea to if it is high or low
     } 
     
     //medium length characters
@@ -121,9 +122,9 @@ function waterLevelCalculator(char){
     fishReaction(waterBudget);
     waterLevel.style.height = `${waterBudget}%`;
     console.log(waterLevel)
-    // fish.style.top=fish.style.top+10%
+
     if(waterBudget>35){
-        fish.style.top = `${80-waterBudget+30}%`;
+        fish.style.top = `${80-waterBudget+30}%`; // this was for making the fish move a level down based on the amount of water in the bowl (i.e. height of water). Here it is subtracted by 80 at first because we have defined water budget initially as 80. This does mean that if we change the initial water budget at the top, we will have to come down here and change this number. Not the most flexible but it works!
     }
     else{
         fish.style.top = `${80-waterBudget+10}%`;
@@ -162,12 +163,12 @@ function fishReaction(count){
    if(count <= 25){
     fish.src = cryFish;
     fish.classList.remove('applyFishMove');
-    fish.classList.add('applyFishShake');
+    fish.classList.add('applyFishShake'); // this is when fish starts swimming frantically
     }
 
     else if(count > 25 && count <= 65){
         fish.src = scaredFish;
-        fishCommentary("I am scared..")
+        fishCommentary("I am scared.."); // this is the text that is shown behind the bowl
     }
 
     else if(count > 65 && count <= 75){
@@ -206,10 +207,10 @@ function showWaterDecrease(waterUsed){
     Notif.classList.add('.applywaterNotifAppear');
     Notif.addEventListener('animationend', () => {
     Notif.classList.remove('.applywaterNotifAppear');
-    }, { once: true });
+    }, { once: true }); // this is for making animation to appear just once
 
         setTimeout(() => {
-            document.querySelector(".waterNotif").remove();
+            document.querySelector(".waterNotif").remove(); // we want this message to be shown once and go away
         }, 1500);
 }
 
