@@ -6,7 +6,7 @@
 <hr>
 
 <h2>How it works</h2>
-<img src="images/chat-screenshot.jpg" alt="Guppy" width="500"> 
+<img src="images/chat-screenshot.jpg" alt="ChatGPT screenshot with fishbowl" width="500"> 
 <ul>
   <li>Guppy lives in your browser as a Chrome extension popup</li>
   <li>Its water level is calculated based on the number of characters in each prompt you send</li>
@@ -39,3 +39,5 @@
   <li>Click <strong>Load unpacked</strong> and select the project folder</li>
   <li>Guppy will appear in your extensions bar</li>
 </ol>
+
+<img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> 
