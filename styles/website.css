@@ -7,7 +7,8 @@
 }
 
 body{
-    background-image: url("images/background-mobile.svg");
+    background-color: #EEFCFC;
+    background-image: url("../images/background-mobile.svg");
     background-size: cover;     
     background-repeat: no-repeat;
     background-position: center;
@@ -15,12 +16,16 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     padding: 1.2rem;
-
-
+    
+    
     content{
         max-width: 32rem;
         text-align: center;
+        flex-grow: 1;
+        align-content: center;
 
     
         img{
@@ -71,10 +76,14 @@ body{
 
 }
 
+footer{
+    background-color: #EEFCFC;
+}
+
 @media (width>650px) {
 
     body{
-    background-image: url("images/background.svg");
+    background-image: url("../images/background.svg");
 
     content{
         max-width: 28rem;
