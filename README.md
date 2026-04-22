@@ -1,4 +1,4 @@
-<img src="images/guppy.png" alt="Guppy" width="80"> 
+<img src="images/guppy.svg" alt="Guppy" width="80"> 
 <h1>Keep Guppy Alive!</h1>
 
 <p>Guppy is a virtual pet fish that lives in your ChatGPT tab inside a bowl. The bowl represents ChatGPT's water consumption. Every prompt drops the bowl's water level and leaves Guppy panicking. It is your job to make sure you can keep Guppy alive whether that is by shortening your prompts or not using ChatGPT at all.</p>
@@ -6,19 +6,19 @@
 <hr>
 
 <h2>How it works</h2>
-
+<img src="images/chat-screenshot.jpg" alt="ChatGPT screenshot with fishbowl" width="500"> 
 <ul>
   <li>Guppy lives in your browser as a Chrome extension popup</li>
-  <li>His water level is calculated based on the number of characters in each prompt you send</li>
-  <li>The longer the prompt, the more water he loses</li>
-  <li>The goal is to keep him alive</li>
+  <li>Its water level is calculated based on the number of characters in each prompt you send</li>
+  <li>The longer the prompt, the more water it loses</li>
+  <li>The goal is to keep it alive</li>
 </ul>
 
 <hr>
 
 <h2>Backstory</h2>
 
-<p>The idea came to me during my Typography and Interaction class at Parsons. We were talking about AI and how we often don't know about its cost on the environment. My professor explained this in terms of water tanks and I wondered, what if we could actually see those water tanks? And so the fish bowl was born.</p>
+<p>The idea came to me during my Typography and Interaction class at Parsons. We were talking about AI and how we often don't know about its cost on the environment. My professor explained this in terms of water tanks and how each one of us has a water tank of servers can use to cool it. This made me wonder, what if we could actually see those water tanks? And so the fish bowl was born.</p>
 
 <hr>
 
@@ -39,3 +39,5 @@
   <li>Click <strong>Load unpacked</strong> and select the project folder</li>
   <li>Guppy will appear in your extensions bar</li>
 </ol>
+
+<img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40"> <img src="images/guppy.png" alt="Guppy" width="40">
