@@ -72,6 +72,7 @@ setTimeout(() => {
                 if (waterBudget > 10) { //here if the water level is less than 10 then guppy dies
                     waterLevelCalculator(char);
                 } else {
+                    makeBgOrange("death")
                     guppyDeath();
                 }
             }
@@ -91,6 +92,7 @@ setTimeout(() => {
                 if (waterBudget > 10) {
                     waterLevelCalculator(char);
                 } else {
+                    makeBgOrange("death")
                     guppyDeath();
                 }
             }
@@ -164,11 +166,19 @@ function fishReaction(count){
     fish.src = cryFish;
     fish.classList.remove('applyFishMove');
     fish.classList.add('applyFishShake'); // this is when fish starts swimming frantically
+    makeBgOrange("cry");
     }
 
     else if(count > 25 && count <= 65){
         fish.src = scaredFish;
-        fishCommentary("I am scared.."); // this is the text that is shown behind the bowl
+
+        // using array and randomize to send random call outs that the fish could say if it is scared
+        // I asked chatgpt for the randomize syntax and it gave me this, what is happening here is math.random generates a random decimal(0.123 or sth) which we multiply by the length of our array (in this case 3), then we get the floor value (round down) of this, (in this case 0.123*3 = 0.369 ~ 0). Now this value in array is array[0] (in our case fishThoughts[0]="I am scared...")
+        let fishThoughts = ["I am scared..", "This is bad..", "Oh My Fish"];
+        let randomThought = fishThoughts[Math.floor(Math.random() * fishThoughts.length)];
+
+        fishCommentary(randomThought); // this is the text that is shown behind the bowl
+        makeBgOrange("scared");
     }
 
     else if(count > 65 && count <= 75){
@@ -221,12 +231,28 @@ function fishCommentary(said){
     <p class="comment">${said}</p>
     `
     let bowlArea = document.querySelector('.bowlArea');
-     bowlArea.insertAdjacentHTML("afterbegin",comment); 
+     bowlArea.insertAdjacentHTML("afterbegin",comment);
+   
 
      setTimeout(()=>{
         document.querySelector(".comment").remove();
      }, 1000);
 
+}
+
+function makeBgOrange(state){
+    let fishBowl = document.querySelector('.fishBowl');
+   fishBowl.style.background="rgba(255, 213, 190, 0.56)";  
+
+   if(state == "scared"){
+       setTimeout(()=>{
+            fishBowl.style.background="rgba(226, 250, 250, 0.562)"; 
+         }, 1000);
+   }
+
+   else if (state == "death"){
+       fishBowl.style.background="rgba(226, 250, 250, 0.562)"; 
+   }
 }
 
 }, 3000)

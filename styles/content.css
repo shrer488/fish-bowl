@@ -25,10 +25,28 @@ body{
             border-radius: 100rem;
             background: #E56E2F;
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.2rem 0.8rem;
             font-size: 1rem;
+            font-weight: 600;
             border: none;
+            z-index: 1;
+            top: 50%;
+            left: -84%;
         }
+
+        .comment:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: -1rem;
+            top: 20%;
+            border: 0.5rem solid transparent;
+            border-left: 1rem solid #E56E2F;
+            border-radius: 0.6rem;
+            z-index: 1;
+        }
+
 
         .guppyDeath{
             position: absolute;
@@ -41,6 +59,7 @@ body{
             color: #212121;
             width: fit-content;
             align-items: center;
+            z-index: 1;
         }
 
         .waterNotif{
@@ -111,6 +130,8 @@ body{
           top: 30%;
           pointer-events: all;
       }
+
+      
 
       .fish:hover{
        transform: scale(1.4);
