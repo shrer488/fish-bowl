@@ -50,7 +50,7 @@ body{
 
         .guppyDeath{
             position: absolute;
-            border: 0.4rem solid #D0D0D0;
+            border: 0.2rem solid #D0D0D0;
             border-radius: 2rem;
             padding: 0.5rem 1rem;
             font-size: 1rem;
