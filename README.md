@@ -6,12 +6,12 @@
 <hr>
 
 <h2>How it works</h2>
-
+<img src="images/chat-screenshot.jpg" alt="Guppy" width="500"> 
 <ul>
   <li>Guppy lives in your browser as a Chrome extension popup</li>
-  <li>His water level is calculated based on the number of characters in each prompt you send</li>
-  <li>The longer the prompt, the more water he loses</li>
-  <li>The goal is to keep him alive</li>
+  <li>Its water level is calculated based on the number of characters in each prompt you send</li>
+  <li>The longer the prompt, the more water it loses</li>
+  <li>The goal is to keep it alive</li>
 </ul>
 
 <hr>
