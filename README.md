@@ -24,9 +24,11 @@
 
 <h2>Design</h2>
 
-<p>For the design, I wanted the user to form an attachment with the little goldfish Guppy — a desire to take care of him — with the hope that it translates into a desire to take care of the ocean.</p>
+<p>For the design, I wanted the user to form an attachment with the little goldfish Guppy, a desire to take care of him, with the hope that it translates into a desire to take care of the ocean.</p>
 
-<p>What is interesting about this project is the number of times I ran out of free ChatGPT usage while testing whether the code worked, which is ironic, considering my goal was to make users keep the fish alive.</p>
+<p>For the webpage I kept it very minimal with big plants and rocks, the same decorations that are in Guppy's bowl. I wanted users to feel like they are in Guppy's world.</p>
+
+<p>What is interesting about this project is the number of times I sent prompts to ChatGPT while testing whether the code worked, which is ironic, considering my goal was to limit the use and make users keep Guppy alive.</p>
 
 <hr>
 
