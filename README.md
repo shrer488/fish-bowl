@@ -33,7 +33,7 @@
 <h2>Installation</h2>
 
 <ol>
-  <li>Clone this repository</li>
+  <li>Clone this repository or go to <a href = "https://shrer488.github.io/fish-bowl/index.html">Keep Guppy Alive! Website</a> and download the extension</li>
   <li>Open Chrome and go to <code>chrome://extensions</code></li>
   <li>Enable <strong>Developer mode</strong> in the top right</li>
   <li>Click <strong>Load unpacked</strong> and select the project folder</li>
