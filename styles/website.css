@@ -41,6 +41,15 @@ body{
         }
 
         a{
+            text-decoration: none;
+        }
+        
+        a:hover{
+            background-color: #CFF6F6;
+            color: #1D7A7A;
+        }
+
+        .downloadBtn{
             background-color: #1D7A7A;
             padding-block: 0.6rem;
             padding-inline: 1.2rem;
@@ -50,10 +59,14 @@ body{
             display: inline-block;
         }
 
-        a:hover{
+        .downloadBtn:hover{
             background-color: #135858;
             transform: translateY(-0.2rem);
+            color: white;
+
         }
+
+        
     }
 
 }
@@ -74,7 +87,7 @@ body{
             font-size: 1rem;
         }
     
-        a{
+        .downloadBtn{
             padding-block: 0.8rem;
         }
     }

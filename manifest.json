@@ -15,7 +15,7 @@
   },
   "content_scripts": [
     {
-      "js": ["scripts/bowl.js","scripts/popup.js"],
+      "js": ["scripts/bowl.js"],
       
       "matches": [
         "https://chatgpt.com/*"

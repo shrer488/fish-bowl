@@ -15,12 +15,9 @@ body{
         right:5%;
         pointer-events: none;
         display: flex;
-        /* flex-direction: column-reverse; */
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-
-       
         color: #1D7A7A;
 
         .comment{
@@ -70,7 +67,6 @@ body{
         border-top: 0rem;
         border-radius: 5rem;
         border-block-start: none;
-        /* border: 0.2rem solid rgba(144, 200, 200, 0.562); */
         background-color: rgba(226, 250, 250, 0.562);
         mask-image: linear-gradient(
             0deg,
@@ -150,11 +146,9 @@ body{
 /* Bowl first appears */
 @keyframes bowlAppear {
     from {
-        /* top: -1rem; */
         scale: 0;
     }
     to{
-        /* top: 5%; */
         scale: 1;
     }
 }
@@ -176,7 +170,6 @@ body{
 
 .applywaterNotifAppear{
     animation: waterNotifAppear 4s;
-    /* animation-duration: 0.4s; */
 }
 
 /* Bowl shake on message sent */
@@ -239,7 +232,6 @@ animation-duration: 0.4s;
 /* Fish swim frantic when water level is very low */
 @keyframes fishShake {
         from {
-            /* top:7rem ; */
             
     left: 6rem;
   }
@@ -264,12 +256,10 @@ animation-duration: 0.4s;
     transform: scaleX(1);
   }
   99%{
-    /* top:7rem ; */
     left:6rem;
   }
 
   to {
-    /* top:8rem ; */
     left: 6rem;
   }
 }
@@ -277,7 +267,6 @@ animation-duration: 0.4s;
 /* Initial fish scare  */
 @keyframes initialFishShake {
            from {
-            /* top:2rem ; */
             
     left: 6rem;
   }
@@ -302,12 +291,10 @@ animation-duration: 0.4s;
     transform: scaleX(1);
   }
   99%{
-    /* top:2rem ; */
     left:6rem;
   }
 
   to {
-    /* top:2rem ; */
     left: 6rem;
   }
     }
