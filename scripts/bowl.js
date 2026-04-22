@@ -67,7 +67,7 @@ setTimeout(() => {
             char = textArea.textContent.length;
 
             //here event.key is checking if enter was clicked and !event.shiftKey is checking if shift key was not clicked. In chat you can get to another line in the text box by pressing shift+enter so it is brought in combination, this function checks only the enter key press without the combination of shift key 
-            if (event.key === "Enter" && !event.shiftKey) {
+            if (event.key === "Enter" && !event.shiftKey && char!=0) {
                 moveBowl();
                 if (waterBudget > 10) { //here if the water level is less than 10 then guppy dies
                     waterLevelCalculator(char);
@@ -174,7 +174,7 @@ function fishReaction(count){
 
         // using array and randomize to send random call outs that the fish could say if it is scared
         // I asked chatgpt for the randomize syntax and it gave me this, what is happening here is math.random generates a random decimal(0.123 or sth) which we multiply by the length of our array (in this case 3), then we get the floor value (round down) of this, (in this case 0.123*3 = 0.369 ~ 0). Now this value in array is array[0] (in our case fishThoughts[0]="I am scared...")
-        let fishThoughts = ["I am scared..", "This is bad..", "Oh My Fish"];
+        let fishThoughts = ["I am scared..", "This is bad..", "Oh My Fish!"];
         let randomThought = fishThoughts[Math.floor(Math.random() * fishThoughts.length)];
 
         fishCommentary(randomThought); // this is the text that is shown behind the bowl
