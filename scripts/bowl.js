@@ -180,7 +180,7 @@ function fishReaction(count){
 function guppyDeath(){
     // Dead mode
         console.log("your fish is dead!");
-        let deadFishImage = chrome.runtime.getURL("images/guppy-dead.png");
+        let deadFishImage = chrome.runtime.getURL("../images/guppy-dead.png");
         let bowlArea = document.querySelector('.bowlArea');
 
         let deadFish = `
